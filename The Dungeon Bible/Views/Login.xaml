@@ -25,18 +25,14 @@
                 <Grid.Background>
                     <ImageBrush ImageSource="C:\Users\jay mark\source\repos\The Dungeon Bible\The Dungeon Bible\Images\DungeonMesh1.jpg"
                             Stretch="UniformToFill"/>
-            </Grid.Background>
+                </Grid.Background>
             </Grid>
 
-
-
-
-        <!--<Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-            </Grid>-->
+            <Grid Grid.Row="1">
+            <Grid.Background>
+                <ImageBrush ImageSource="C:\Users\jay mark\source\repos\The Dungeon Bible\The Dungeon Bible\Images\Parchment.png"/>
+            </Grid.Background>
+            </Grid>
 
             <TextBlock
               Text="The Dungeon Bible"

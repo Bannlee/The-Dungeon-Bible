@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:The_Dungeon_Bible.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="450">
-    
+        Title="MainWindow" Height="700" Width="450"
+        Background="#FFDFDBC8">
+
+
     <Viewbox Stretch="Uniform">
         <Grid Width="450" Height="700">
             <Grid.Background>
@@ -28,13 +30,32 @@
             </Grid>
 
             <Grid Grid.Row="1">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+                <Grid.Background>
+                    <ImageBrush ImageSource="C:\Users\jay mark\source\repos\The Dungeon Bible\The Dungeon Bible\Images\Parchment.png"/>
+                </Grid.Background>
             </Grid>
+
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="1" Grid.Column="0" Margin="0, 50, 0, 400" Content="My Characters" FontFamily="Cambria" Background="Beige"/>
+
+                <Button Grid.Row="1" Grid.Column="0" Margin="0, 100, 0, 350" Content="Classes" FontFamily="Cambria" Background="Beige"/>
+
+                <Button Grid.Row="1" Grid.Column="0" Margin="0, 150, 0, 300" Content="Races" FontFamily="Cambria" Background="Beige"/>
+
+                <Button Grid.Row="1" Grid.Column="0" Margin="0, 200, 0, 250" Content="Shop" FontFamily="Cambria" Background="Beige"/>
+
+                <Border Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="1" Background="Black" Margin="0.5"/> 
+            </Grid>
+
             
-            
+
+
 
         </Grid>
     </Viewbox>
