@@ -42,15 +42,33 @@
                     <ColumnDefinition Width="*"/>
 
                 </Grid.ColumnDefinitions>
-                <Button Grid.Row="1" Grid.Column="0" Margin="0, 50, 0, 400" Content="My Characters" FontFamily="Cambria" Background="Beige"/>
+                <Button Grid.Row="1" Grid.Column="0" Margin="0, 20, 0, 430" Content="My Characters" FontFamily="Cambria" Background="Beige"/>
 
-                <Button Grid.Row="1" Grid.Column="0" Margin="0, 100, 0, 350" Content="Classes" FontFamily="Cambria" Background="Beige"/>
+                <Button Grid.Row="1" Grid.Column="0" Margin="0, 70, 0, 380" Content="Classes" FontFamily="Cambria" Background="Beige"/>
 
-                <Button Grid.Row="1" Grid.Column="0" Margin="0, 150, 0, 300" Content="Races" FontFamily="Cambria" Background="Beige"/>
+                <Button Grid.Row="1" Grid.Column="0" Margin="0, 120, 0, 330" Content="Races" FontFamily="Cambria" Background="Beige"/>
 
-                <Button Grid.Row="1" Grid.Column="0" Margin="0, 200, 0, 250" Content="Shop" FontFamily="Cambria" Background="Beige"/>
+                <Button Grid.Row="1" Grid.Column="0" Margin="0, 170, 0, 280" Content="Shop" FontFamily="Cambria" Background="Beige"/>
 
-                <Border Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="1" Background="Black" Margin="0.5"/> 
+                <Border Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="1" Background="Black" Margin="0.5"/>
+
+                <Image Source="C:\Users\jay mark\source\repos\The Dungeon Bible\The Dungeon Bible\Images\GreenDrake.png"
+                 Grid.Column="1" Margin="304,156,-331,-132">
+                    <Image.RenderTransform>
+                        <ScaleTransform                     ScaleX="-1" ScaleY="1"/>
+                    </Image.RenderTransform>
+                </Image>
+
+               <TextBlock
+    Text="The Dungeon Bible"
+    Grid.Column="1"
+    HorizontalAlignment="Center"
+    VerticalAlignment="Top"
+    FontSize="28"
+    FontFamily="Palatino Linotype"
+    FontWeight="Bold" Margin="0,10,0,0"
+    Foreground="DarkRed"/>
+
             </Grid>
 
             

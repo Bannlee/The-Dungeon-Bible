@@ -32,6 +32,10 @@
             <Grid.Background>
                 <ImageBrush ImageSource="C:\Users\jay mark\source\repos\The Dungeon Bible\The Dungeon Bible\Images\Parchment.png"/>
             </Grid.Background>
+
+                <Image Source="C:\Users\jay mark\source\repos\The Dungeon Bible\The Dungeon Bible\Images\MushroomRun.png"
+                       
+                  Margin="0, 260, 0, 0"/>
             </Grid>
 
             <TextBlock
@@ -41,7 +45,8 @@
               VerticalAlignment="Top"
               FontSize="36"
               FontFamily="Palatino Linotype"
-              FontWeight="Bold" Margin="0,10,0,0"/>
+              FontWeight="Bold" Margin="0,10,0,0"
+              Foreground="DarkRed"/>
 
             <TextBlock
               Text="Login"
