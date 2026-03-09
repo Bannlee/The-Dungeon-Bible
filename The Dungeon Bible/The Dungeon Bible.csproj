@@ -9,4 +9,25 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Images\DungeonMesh1.jpg" />
+    <None Remove="Images\DungeonMesh2.jpg" />
+    <None Remove="Images\GreenDrake.png" />
+    <None Remove="Images\MushroomRun.png" />
+    <None Remove="Images\Parchment.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Parchment.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\DungeonMesh1.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\DungeonMesh2.jpg" />
+    <Resource Include="Images\GreenDrake.png" />
+    <Resource Include="Images\MushroomRun.png" />
+  </ItemGroup>
+
 </Project>

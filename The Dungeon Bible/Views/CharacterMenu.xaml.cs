@@ -15,17 +15,13 @@ using System.Windows.Shapes;
 namespace The_Dungeon_Bible.Views
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for CharacterMenu.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class CharacterMenu : Window
     {
-        public Login()
+        public CharacterMenu()
         {
             InitializeComponent();
-            this.DataContext = new ViewModel.LoginVM();
         }
-
-      
-     
     }
 }

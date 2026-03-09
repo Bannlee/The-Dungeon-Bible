@@ -25,13 +25,13 @@
 
             <Grid Grid.Row="0" Width="450" Height="210">
                 <Grid.Background>
-                    <ImageBrush ImageSource="C:\Users\jay mark\source\repos\The Dungeon Bible\The Dungeon Bible\Images\DungeonMesh2.jpg"/>
+                    <ImageBrush ImageSource="..\Images\DungeonMesh2.jpg"/>
                 </Grid.Background>
             </Grid>
 
             <Grid Grid.Row="1">
                 <Grid.Background>
-                    <ImageBrush ImageSource="C:\Users\jay mark\source\repos\The Dungeon Bible\The Dungeon Bible\Images\Parchment.png"/>
+                    <ImageBrush ImageSource="..\Images\Parchment.png"/>
                 </Grid.Background>
             </Grid>
 
@@ -42,17 +42,17 @@
                     <ColumnDefinition Width="*"/>
 
                 </Grid.ColumnDefinitions>
-                <Button Grid.Row="1" Grid.Column="0" Margin="0, 20, 0, 430" Content="My Characters" FontFamily="Cambria" Background="Beige"/>
+                <Button Grid.Row="1" Grid.Column="0" Margin="3, 20, 4, 430" Content="My Characters" FontFamily="Cambria" Background="Beige" Click="Button_Click"/>
 
-                <Button Grid.Row="1" Grid.Column="0" Margin="0, 70, 0, 380" Content="Classes" FontFamily="Cambria" Background="Beige"/>
+                <Button Grid.Row="1" Grid.Column="0" Margin="3, 70, 4, 380" Content="Classes" FontFamily="Cambria" Background="Beige"/>
 
-                <Button Grid.Row="1" Grid.Column="0" Margin="0, 120, 0, 330" Content="Races" FontFamily="Cambria" Background="Beige"/>
+                <Button Grid.Row="1" Grid.Column="0" Margin="3, 120, 4, 330" Content="Races" FontFamily="Cambria" Background="Beige"/>
 
-                <Button Grid.Row="1" Grid.Column="0" Margin="0, 170, 0, 280" Content="Shop" FontFamily="Cambria" Background="Beige"/>
+                <Button Grid.Row="1" Grid.Column="0" Margin="3, 170, 4, 280" Content="Shop" FontFamily="Cambria" Background="Beige"/>
 
                 <Border Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="1" Background="Black" Margin="0.5"/>
 
-                <Image Source="C:\Users\jay mark\source\repos\The Dungeon Bible\The Dungeon Bible\Images\GreenDrake.png"
+                <Image Source="..\Images\GreenDrake.png"
                  Grid.Column="1" Margin="304,156,-331,-132">
                     <Image.RenderTransform>
                         <ScaleTransform                     ScaleX="-1" ScaleY="1"/>
@@ -69,7 +69,35 @@
     FontWeight="Bold" Margin="0,10,0,0"
     Foreground="DarkRed"/>
 
+                <TextBlock
+Text="A Dungeons and Dragons Character App"
+Grid.Column="1"
+HorizontalAlignment="Center"
+VerticalAlignment="Top"
+FontSize="13"
+FontFamily="Cambria"
+FontWeight="Bold" Margin="0,50,0,0"
+Foreground="Black"/>
+
+                <TextBlock Grid.Column="1" FontFamily="Cambria" FontSize="10" Margin="0,90,0,0" HorizontalAlignment="Center" >
+                   The Dungeon Bible is application that helps players
+                    <LineBreak/>
+                   manage their Dungeons and Dragons characters by 
+                    <LineBreak/>
+                    organizing their information into one easy-use space.
+                    <LineBreak/>
+                    It also reduces the need for manual calculation with
+                    <LineBreak/>
+                    automated dice rolls based on your stats.
+                    <LineBreak/>
+                    <LineBreak/>
+                    Trust us with your characters!
+
+                </TextBlock>
+
             </Grid>
+
+            
 
             
 

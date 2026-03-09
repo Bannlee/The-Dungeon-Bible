@@ -17,5 +17,12 @@ namespace The_Dungeon_Bible.Views
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Views.CharacterMenu charmenu = new Views.CharacterMenu();
+            charmenu.Show();
+            this.Close();
+        }
     }
 }
