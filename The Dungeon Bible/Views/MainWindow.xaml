@@ -59,7 +59,7 @@
                     </Image.RenderTransform>
                 </Image>
 
-               <TextBlock
+                <TextBlock
     Text="The Dungeon Bible"
     Grid.Column="1"
     HorizontalAlignment="Center"
@@ -79,7 +79,17 @@ FontFamily="Cambria"
 FontWeight="Bold" Margin="0,50,0,0"
 Foreground="Black"/>
 
-                <TextBlock Grid.Column="1" FontFamily="Cambria" FontSize="10" Margin="0,90,0,0" HorizontalAlignment="Center" >
+                <TextBlock
+Text="{Binding CurrentUser.Username, StringFormat = 'Hey {0},'}"
+Grid.Column="1"
+HorizontalAlignment="Left"
+VerticalAlignment="Top"
+FontSize="13"
+FontFamily="Cambria"
+FontWeight="Bold" Margin="37,98,0,0"
+Foreground="Black"/>
+
+                <TextBlock Grid.Column="1" FontFamily="Cambria" FontSize="10" Margin="0,120,0,-30" HorizontalAlignment="Center" >
                    The Dungeon Bible is application that helps players
                     <LineBreak/>
                    manage their Dungeons and Dragons characters by 
@@ -97,9 +107,9 @@ Foreground="Black"/>
 
             </Grid>
 
-            
 
-            
+
+
 
 
 

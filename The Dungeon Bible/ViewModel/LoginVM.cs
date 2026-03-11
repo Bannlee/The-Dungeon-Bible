@@ -27,7 +27,10 @@ namespace The_Dungeon_Bible.ViewModel
           
             if (CurrentUser.Username.Trim() == "admin" && CurrentUser.Password.Trim() == "1234") 
             {
+                var MainWindowViewModel = new MainWindowVM(CurrentUser);
                 var login = new Views.MainWindow();
+
+                login.DataContext = MainWindowViewModel;
                 login.Show();
                 Application.Current.MainWindow.Close();
             }
