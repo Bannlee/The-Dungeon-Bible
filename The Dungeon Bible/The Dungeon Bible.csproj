@@ -13,11 +13,15 @@
     <None Remove="Images\DungeonMesh1.jpg" />
     <None Remove="Images\DungeonMesh2.jpg" />
     <None Remove="Images\GreenDrake.png" />
+    <None Remove="Images\MarcilleFalin.jpg" />
     <None Remove="Images\MushroomRun.png" />
     <None Remove="Images\Parchment.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\MarcilleFalin.jpg">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Parchment.png" />
   </ItemGroup>
 

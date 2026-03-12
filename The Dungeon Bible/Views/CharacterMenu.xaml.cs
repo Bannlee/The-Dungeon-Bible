@@ -1,4 +1,5 @@
-﻿using System;
+﻿using The_Dungeon_Bible.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace The_Dungeon_Bible.Views
         public CharacterMenu()
         {
             InitializeComponent();
+            this.DataContext = new CharacterVM();
         }
     }
 }

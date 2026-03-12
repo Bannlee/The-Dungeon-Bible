@@ -9,7 +9,7 @@
 
     <Viewbox Stretch="Uniform">
         <Grid Width="450" Height="700">
-            
+
             <Grid.Background>
                 <ImageBrush ImageSource="..\Images\Parchment.png"/>
             </Grid.Background>
@@ -18,8 +18,13 @@
                 <RowDefinition Height="210"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
-            
+
+            <Grid Grid.Row="0" Width="450" Height="210">
+                <Grid.Background>
+                    <ImageBrush ImageSource="..\Images\MarcilleFalin.jpg"
+                 Stretch="UniformToFill"/>
+                </Grid.Background>
+            </Grid>
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -27,7 +32,31 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+                <DataGrid                              
+        Grid.Column="1" 
+        Margin="19,53,19,233" 
+        AutoGenerateColumns="True" 
+        ItemsSource="{Binding Characterlist}" 
+        CanUserAddRows="True" />
+
+                <TextBlock Text="My Characters" HorizontalAlignment="Center" Margin="0,21,0,-21" FontFamily="Cambria" FontSize="18" Grid.Column="1"/>
+
+                <TextBlock Text="Name" HorizontalAlignment="Center" Margin="0,69,0,-69" FontFamily="Cambria" FontSize="18"/>
+
+                <TextBlock Text="Race" HorizontalAlignment="Left" Margin="58,129,0,-129" FontFamily="Cambria" FontSize="18"/>
+
+                <TextBlock Text="Class" HorizontalAlignment="Center" Margin="0,202,0,-202" FontFamily="Cambria" FontSize="18"/>
+
+                <TextBlock Text="Level" HorizontalAlignment="Center" Margin="0,266,0,-266" FontFamily="Cambria" FontSize="18"/>
+
+                <TextBox Margin="0,92,0,366"/>
+                <TextBox Margin="0,155,0,303"/>
+                <TextBox Margin="0,229,0,229"/>
+                <TextBox Margin="0,298,0,160"/>
+
+                <Button Margin="10,347,10,107" Content="Add"/>
             </Grid>
+
         </Grid>
     </Viewbox>
 </Window>
