@@ -1,4 +1,5 @@
 ﻿using The_Dungeon_Bible.ViewModel;
+using The_Dungeon_Bible.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

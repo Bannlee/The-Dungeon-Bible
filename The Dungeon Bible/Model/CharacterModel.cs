@@ -12,7 +12,7 @@ namespace The_Dungeon_Bible.Model
         private string _charname = string.Empty;
         private string _race = string.Empty;
         private string _class = string.Empty;
-        private int _level = 0;
+        private int _level = 1;
 
         public string Charname
         {

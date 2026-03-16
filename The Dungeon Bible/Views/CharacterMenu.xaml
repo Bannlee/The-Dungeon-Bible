@@ -37,24 +37,31 @@
         Margin="19,53,19,233" 
         AutoGenerateColumns="True" 
         ItemsSource="{Binding Characterlist}" 
-        CanUserAddRows="True" />
+        CanUserAddRows="True" 
+                    Background="Beige"/>
 
                 <TextBlock Text="My Characters" HorizontalAlignment="Center" Margin="0,21,0,-21" FontFamily="Cambria" FontSize="18" Grid.Column="1"/>
 
-                <TextBlock Text="Name" HorizontalAlignment="Center" Margin="0,69,0,-69" FontFamily="Cambria" FontSize="18"/>
+                <TextBlock Text="Name" HorizontalAlignment="Left" Margin="55,21,0,-21" FontFamily="Cambria" FontSize="18"/>
 
-                <TextBlock Text="Race" HorizontalAlignment="Left" Margin="58,129,0,-129" FontFamily="Cambria" FontSize="18"/>
+                <TextBlock Text="Race" HorizontalAlignment="Center" Margin="0,90,0,-90" FontFamily="Cambria" FontSize="18"/>
 
-                <TextBlock Text="Class" HorizontalAlignment="Center" Margin="0,202,0,-202" FontFamily="Cambria" FontSize="18"/>
+                <TextBlock Text="Class" HorizontalAlignment="Center" Margin="0,160,0,-160" FontFamily="Cambria" FontSize="18"/>
 
-                <TextBlock Text="Level" HorizontalAlignment="Center" Margin="0,266,0,-266" FontFamily="Cambria" FontSize="18"/>
+                <TextBlock Text="Level" HorizontalAlignment="Left" Margin="57,229,0,-229" FontFamily="Cambria" FontSize="18"/>
 
-                <TextBox Margin="0,92,0,366"/>
-                <TextBox Margin="0,155,0,303"/>
-                <TextBox Margin="0,229,0,229"/>
-                <TextBox Margin="0,298,0,160"/>
+                <TextBox Margin="4,53,4,405" Text="{Binding newcharacter.Charname}"/>
+                <TextBox Margin="4,123,4,335" Text="{Binding newcharacter.Race}"/>
+                <TextBox Margin="4,192,4,266" Text="{Binding newcharacter.Class}"/>
+                <TextBox Margin="4,258,4,200" Text="{Binding newcharacter.Level}"/>
+                <Border Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="1" Background="Black" Margin="0.5"/>
+                <Button Margin="20,266,205,200" Content="Save" Grid.Column="1" Background="Beige" Command="{Binding SaveCharacter}"/>
+                <Button Margin="112,266,112,200" Content="Delete" Grid.Column="1" Background="Beige"/>
+                <Button Margin="205,266,20,200" Content="Clear" Grid.Column="1" Background="Beige" Command="{Binding ClearEntries}"/>
 
-                <Button Margin="10,347,10,107" Content="Add"/>
+                <Image Source="/Images/MushroomRun.png" Margin="38,135,112,-135" Grid.Column="1"/>
+                <Image Source="/Images/MushroomRun.png" Margin="170,196,36,-90" Grid.Column="1"/>
+                <Image Source="/Images/MushroomRun.png" Margin="124,236,83,-130" Grid.Column="1"/>
             </Grid>
 
         </Grid>
