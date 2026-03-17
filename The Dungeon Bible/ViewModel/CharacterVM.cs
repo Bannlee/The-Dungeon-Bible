@@ -15,8 +15,12 @@ namespace The_Dungeon_Bible.ViewModel
 
         public CharacterModel newcharacter { get; set; }
 
+        private CharacterModel _selectedcharacter;
+
         public ICommand SaveCharacter { get; set; }
         public ICommand ClearEntries {  get; set; }
+
+        public ICommand DeleteCharacter {get; set; }
 
         public CharacterVM()
         {
@@ -29,9 +33,11 @@ namespace The_Dungeon_Bible.ViewModel
             newcharacter = new CharacterModel();
             SaveCharacter = new RelayCommand(ExecuteSaveCharacter);
             ClearEntries = new RelayCommand(ExecuteClear);
+            DeleteCharacter = new RelayCommand(ExecuteDeleteCharacter);
         }
 
-      
+     
+
         public void ExecuteSaveCharacter(object? par)
         {
             Characterlist.Add(new CharacterModel { Charname = newcharacter.Charname, Race = newcharacter.Race, Class = newcharacter.Class, Level = newcharacter.Level });
@@ -48,6 +54,34 @@ namespace The_Dungeon_Bible.ViewModel
             newcharacter.Race = string.Empty;
             newcharacter.Class = string.Empty;
             newcharacter.Level = 1;
+        }
+
+        public void ExecuteDeleteCharacter(object? par)
+        {
+            Characterlist.Remove(SelectedCharacters);
+
+            newcharacter.Charname = string.Empty;
+            newcharacter.Race = string.Empty;
+            newcharacter.Class = string.Empty;
+            newcharacter.Level = 1;
+        }
+
+        public CharacterModel SelectedCharacters
+        {
+            get { return _selectedcharacter; }
+            set
+            {
+                _selectedcharacter = value;
+                OnPropertyChanged(nameof(SelectedCharacters));
+
+                if (SelectedCharacters != null)
+                {
+                    newcharacter.Charname = SelectedCharacters.Charname;
+                    newcharacter.Race = SelectedCharacters.Race;
+                    newcharacter.Class = SelectedCharacters.Class;
+                    newcharacter.Level = SelectedCharacters.Level;
+                }
+            }
         }
         
             
