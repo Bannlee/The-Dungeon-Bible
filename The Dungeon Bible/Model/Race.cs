@@ -7,7 +7,7 @@ using The_Dungeon_Bible.ViewModel;
 
 namespace The_Dungeon_Bible.Model
 {
-    internal class Race : ObservableObject
+    public class Race : ObservableObject
     {
         private string? _racename = string.Empty;
         private string? _racialfeature = string.Empty;

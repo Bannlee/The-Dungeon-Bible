@@ -7,7 +7,7 @@ using The_Dungeon_Bible.ViewModel;
 
 namespace The_Dungeon_Bible.Model
 {
-    internal class Class : ObservableObject
+    public class Class : ObservableObject
     {
 
         private string _classname = string.Empty;

@@ -51,7 +51,8 @@
                 <TextBlock Grid.Row="1" Text="{Binding Char1Class.ClassName}" Margin="210,85,0,-112" FontSize="15"
               FontFamily="Cambria" FontWeight="Bold" HorizontalAlignment="Left" Foreground="DarkRed"/>
             </StackPanel>
-            <Button Grid.Row="1" Margin="319,85,44,369" FontFamily="Cambria" Content="Edit" Background="Bisque" BorderBrush="DarkRed" />
+            <Button Grid.Row="1" Margin="319,85,44,369" FontFamily="Cambria" Content="Edit" Background="Bisque" BorderBrush="DarkRed" Command="{Binding EditCharacterCommand}"
+              CommandParameter="{Binding Characterlist[0]}"/>
             <Button Grid.Row="1" Margin="319,140,44,315" FontFamily="Cambria" Content="View" Background="Bisque" BorderBrush="DarkRed" />
             
             <!--THIS IS FOR CHARACTER 1-->
@@ -71,7 +72,8 @@
                 <TextBlock Grid.Row="1" Text="{Binding Char2Class.ClassName}" Margin="210,85,0,-112" FontSize="15"
                  FontFamily="Cambria" FontWeight="Bold" HorizontalAlignment="Left" Foreground="DarkRed"/>
             </StackPanel>
-            <Button Grid.Row="1" Margin="319,228,44,228" FontFamily="Cambria" Content="Edit" Background="Bisque" BorderBrush="DarkRed" />
+            <Button Grid.Row="1" Margin="319,228,44,228" FontFamily="Cambria" Content="Edit" Background="Bisque" BorderBrush="DarkRed"  Command="{Binding EditCharacterCommand}"
+             CommandParameter="{Binding Characterlist[1]}" />
             <Button Grid.Row="1" Margin="319,282,44,173" FontFamily="Cambria" Content="View" Background="Bisque" BorderBrush="DarkRed" />
             <!--THIS IS FOR CHARACTER 2-->
 
@@ -88,7 +90,8 @@
                 <TextBlock Grid.Row="1" Text="{Binding Char3Class.ClassName}" Margin="210,396,0,-423" FontSize="15"
             FontFamily="Cambria" FontWeight="Bold" HorizontalAlignment="Left" Foreground="DarkRed"/>
 
-            <Button Grid.Row="1" Margin="319,364,44,92" FontFamily="Cambria" Content="Edit" Background="Bisque" BorderBrush="DarkRed" />
+            <Button Grid.Row="1" Margin="319,364,44,92" FontFamily="Cambria" Content="Edit" Background="Bisque" BorderBrush="DarkRed"  Command="{Binding EditCharacterCommand}"
+               CommandParameter="{Binding Characterlist[2]}" />
             <Button Grid.Row="1" Margin="319,417,44,38" FontFamily="Cambria" Content="View" Background="Bisque" BorderBrush="DarkRed" />
             <!--THIS IS FOR CHARACTER 3-->
             

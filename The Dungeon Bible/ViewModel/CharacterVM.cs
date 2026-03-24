@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Security.Cryptography.X509Certificates;
+using The_Dungeon_Bible.Views;
+using System.Windows;
 
 namespace The_Dungeon_Bible.ViewModel
 {
@@ -23,6 +25,8 @@ namespace The_Dungeon_Bible.ViewModel
         public Class? Char1Class {  get; set; }
         public Class? Char2Class { get; set; }
         public Class? Char3Class { get; set; }
+
+        public ICommand EditCharacterCommand { get;}
        
         public CharacterVM(UserModel? currentUser)
         {
@@ -37,9 +41,25 @@ namespace The_Dungeon_Bible.ViewModel
             Char2Class = Characterlist[1].Charclass;
             Char3Class = Characterlist[2].Charclass;
 
+            EditCharacterCommand = new RelayCommand(EditCharacter);
         }
 
+        private void EditCharacter(object? parameter)
+        {
+            if (parameter is not CharacterModel selectedCharacter)
+                return;
 
+            var window = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.IsActive);
+
+            var editVM = new EditCharacterVM(selectedCharacter);
+            var editView = new EditCharacterView
+            {
+                DataContext = editVM
+            };
+
+            editView.Show();
+            window?.Close();
+        }
 
 
     }

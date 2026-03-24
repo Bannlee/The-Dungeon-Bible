@@ -14,6 +14,7 @@
     <None Remove="Images\ClassViewPicture.jpg" />
     <None Remove="Images\DungeonMesh1.jpg" />
     <None Remove="Images\DungeonMesh2.jpg" />
+    <None Remove="Images\EditCharacterPicture.jpg" />
     <None Remove="Images\GreenDrake.png" />
     <None Remove="Images\MarcilleFalin.jpg" />
     <None Remove="Images\MushroomRun.png" />
@@ -24,6 +25,7 @@
   <ItemGroup>
     <Resource Include="Images\CharacterIcon.jpg" />
     <Resource Include="Images\ClassViewPicture.jpg" />
+    <Resource Include="Images\EditCharacterPicture.jpg" />
     <Resource Include="Images\MarcilleFalin.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
