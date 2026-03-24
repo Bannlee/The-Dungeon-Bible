@@ -27,6 +27,7 @@ namespace The_Dungeon_Bible.ViewModel
         public Class? Char3Class { get; set; }
 
         public ICommand EditCharacterCommand { get;}
+        public ICommand BackButton {  get;}
        
         public CharacterVM(UserModel? currentUser)
         {
@@ -42,6 +43,7 @@ namespace The_Dungeon_Bible.ViewModel
             Char3Class = Characterlist[2].Charclass;
 
             EditCharacterCommand = new RelayCommand(EditCharacter);
+            BackButton = new RelayCommand(BacktoMenu);
         }
 
         private void EditCharacter(object? parameter)
@@ -51,7 +53,7 @@ namespace The_Dungeon_Bible.ViewModel
 
             var window = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.IsActive);
 
-            var editVM = new EditCharacterVM(selectedCharacter);
+            var editVM = new EditCharacterVM(selectedCharacter, CurrentUser);
             var editView = new EditCharacterView
             {
                 DataContext = editVM
@@ -61,6 +63,18 @@ namespace The_Dungeon_Bible.ViewModel
             window?.Close();
         }
 
+        private void BacktoMenu(object? parameter)
+        {
+            DataGen.Classes = Classes;
+            var window = parameter as Window;
 
+            var MainWindowVM = new MainWindowVM(CurrentUser);
+            var MainWindowView = new Views.MainWindow();
+
+            MainWindowView.DataContext = MainWindowVM;
+            MainWindowView.Show();
+            window?.Close();
+        }
     }
 }
+

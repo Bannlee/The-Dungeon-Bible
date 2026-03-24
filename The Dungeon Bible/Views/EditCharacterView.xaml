@@ -26,8 +26,10 @@
                 </Grid.Background>
             </Grid>
 
-            <Button Margin="0,0,371,180" Background="Bisque" FontFamily="Cambria" Content="Back"/>
+            <Button Margin="0,0,371,180" Background="Bisque" FontFamily="Cambria" Content="Back"
+             Command ="{Binding Return}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
+            <TextBlock Text="{Binding savemessage}" HorizontalAlignment="Left" Margin="97,57,0,223" FontFamily="Cambria" FontSize="20" Width="128" Grid.Row="1" Foreground="#5198ED"/>
             <!---BUttons and stuff-->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -43,40 +45,46 @@
                 <TextBlock Text="Race" HorizontalAlignment="Left" Margin="15,195,0,-195" FontFamily="Cambria" FontSize="18" Width="110"/>
                 <TextBlock Text="Class" HorizontalAlignment="Left" Margin="15,277,0,-277" FontFamily="Cambria" FontSize="18" Width="110"/>
 
-                <TextBox Margin="15,136,15,316"/>
+                <TextBox Margin="15,136,15,316" Text="{Binding SelectedCharacter.Charname}"/>
 
-                <ComboBox Margin="15,221,15,235"/>
-                <ComboBox Margin="15,305,15,151"/>
+                <ComboBox Margin="15,221,15,235" ItemsSource="{Binding Races}"
+             SelectedItem="{Binding SelectedCharacter.Charrace}"
+             DisplayMemberPath="RaceName"/>
+
+                <ComboBox Margin="15,305,15,151"
+                ItemsSource="{Binding Classes}"
+                SelectedItem="{Binding SelectedCharacter.Charclass}"
+                DisplayMemberPath="ClassName"/>
 
                 <!--STATS AREA-->
 
                 <TextBlock Grid.Column="1" Text="Strength" FontFamily="Cambria" FontSize="18" Margin="0,58,0,-58" HorizontalAlignment="Center"/>
-                <TextBox Grid.Column="1" Margin="16,86,10,371"/>
+                <TextBox Grid.Column="1" Margin="16,86,10,371" Text="{Binding Currentstats[0]}"/>
 
 
                 <TextBlock Grid.Column="1" Text="Dexterity" FontFamily="Cambria" FontSize="18" Margin="0,119,0,-119" HorizontalAlignment="Center"/>
-                <TextBox Grid.Column="1" Margin="16,148,10,309"/>
+                <TextBox Grid.Column="1" Margin="16,148,10,309" Text="{Binding Currentstats[1]}"/>
 
 
                 <TextBlock Grid.Column="1" Text="Constitution" FontFamily="Cambria" FontSize="18" Margin="0,186,0,-186" HorizontalAlignment="Center"/>
-                <TextBox Grid.Column="1" Margin="16,212,10,245"/>
+                <TextBox Grid.Column="1" Margin="16,212,10,245" Text="{Binding Currentstats[2]}"/>
 
 
 
                 <TextBlock Grid.Column="1" Text="Intelligence" FontFamily="Cambria" FontSize="18" Margin="0,255,0,-255" HorizontalAlignment="Center"/>
-                <TextBox Grid.Column="1" Margin="16,284,10,173"/>
+                <TextBox Grid.Column="1" Margin="16,284,10,173" Text="{Binding Currentstats[3]}"/>
 
 
                 <TextBlock Grid.Column="1" Text="Wisdom" FontFamily="Cambria" FontSize="18" Margin="0,322,0,-322" HorizontalAlignment="Center"/>
-                <TextBox Grid.Column="1" Margin="16,353,10,104"/>
+                <TextBox Grid.Column="1" Margin="16,353,10,104" Text="{Binding Currentstats[4]}"/>
 
 
                 <TextBlock Grid.Column="1" Text="Charisma" FontFamily="Cambria" FontSize="18" Margin="0,393,0,-393" HorizontalAlignment="Center"/>
-                <TextBox Grid.Column="1" Margin="16,423,10,34"/>
+                <TextBox Grid.Column="1" Margin="16,423,10,34" Text="{Binding Currentstats[5]}"/>
 
 
-                <Button Margin="15,369,167,83" Background="Bisque" BorderBrush="DarkRed" FontFamily="Cambria" Content="Save"/>
-                <Button Margin="167,370,15,82" Background="Bisque" BorderBrush="DarkRed" FontFamily="Cambria" Content="Clear"/>
+                <Button Margin="15,369,167,83" Background="Bisque" BorderBrush="DarkRed" FontFamily="Cambria" Content="Save" Command="{Binding SaveChar}"/>
+                <Button Margin="167,370,15,82" Background="Bisque" BorderBrush="DarkRed" FontFamily="Cambria" Content="Clear" Command="{Binding ClearEntries}"/>
 
 
 

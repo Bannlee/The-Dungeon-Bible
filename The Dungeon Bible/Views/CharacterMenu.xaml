@@ -25,6 +25,8 @@
                  Stretch="UniformToFill"/>
                 </Grid.Background>
             </Grid>
+            
+            <Button Margin="0,0,371,180" Background="Bisque" FontFamily="Cambria" Content="Back"  Command="{Binding BackButton}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
             <TextBlock
              Text="My Characters"
