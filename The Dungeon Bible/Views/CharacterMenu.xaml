@@ -55,7 +55,8 @@
             </StackPanel>
             <Button Grid.Row="1" Margin="319,85,44,369" FontFamily="Cambria" Content="Edit" Background="Bisque" BorderBrush="DarkRed" Command="{Binding EditCharacterCommand}"
               CommandParameter="{Binding Characterlist[0]}"/>
-            <Button Grid.Row="1" Margin="319,140,44,315" FontFamily="Cambria" Content="View" Background="Bisque" BorderBrush="DarkRed" />
+            <Button Grid.Row="1" Margin="319,140,44,315" FontFamily="Cambria" Content="View" Background="Bisque" BorderBrush="DarkRed" Command="{Binding ViewCharacterCommand}"
+              CommandParameter="{Binding Characterlist[0]}"/>
             
             <!--THIS IS FOR CHARACTER 1-->
             
@@ -76,7 +77,8 @@
             </StackPanel>
             <Button Grid.Row="1" Margin="319,228,44,228" FontFamily="Cambria" Content="Edit" Background="Bisque" BorderBrush="DarkRed"  Command="{Binding EditCharacterCommand}"
              CommandParameter="{Binding Characterlist[1]}" />
-            <Button Grid.Row="1" Margin="319,282,44,173" FontFamily="Cambria" Content="View" Background="Bisque" BorderBrush="DarkRed" />
+            <Button Grid.Row="1" Margin="319,282,44,173" FontFamily="Cambria" Content="View" Background="Bisque" BorderBrush="DarkRed" Command="{Binding EditCharacterCommand}"
+              CommandParameter="{Binding Characterlist[1]}" />
             <!--THIS IS FOR CHARACTER 2-->
 
             <!--THIS IS FOR CHARACTER 3-->
@@ -85,7 +87,7 @@
                 <Image Source="..\Images\CharacterIcon.jpg" Margin="2,360,290,33" Grid.Row="1" />
 
 
-            <TextBlock Grid.Row="1" Text="{Binding Characterlist[1].Charname}" Margin="135,364,0,-364" FontSize="22"
+            <TextBlock Grid.Row="1" Text="{Binding Characterlist[2].Charname}" Margin="135,364,0,-364" FontSize="22"
             FontFamily="Cambria" FontWeight="Bold" HorizontalAlignment="Left"/>
                 <TextBlock Grid.Row="1" Text="{Binding Char3Race.RaceName}" Margin="135,396,0,-423" FontSize="15"
             FontFamily="Cambria" FontWeight="Bold" HorizontalAlignment="Left" Foreground="DarkRed"/>
@@ -94,7 +96,8 @@
 
             <Button Grid.Row="1" Margin="319,364,44,92" FontFamily="Cambria" Content="Edit" Background="Bisque" BorderBrush="DarkRed"  Command="{Binding EditCharacterCommand}"
                CommandParameter="{Binding Characterlist[2]}" />
-            <Button Grid.Row="1" Margin="319,417,44,38" FontFamily="Cambria" Content="View" Background="Bisque" BorderBrush="DarkRed" />
+            <Button Grid.Row="1" Margin="319,417,44,38" FontFamily="Cambria" Content="View" Background="Bisque" BorderBrush="DarkRed" Command="{Binding EditCharacterCommand}"
+              CommandParameter="{Binding Characterlist[2]}"/>
             <!--THIS IS FOR CHARACTER 3-->
             
 

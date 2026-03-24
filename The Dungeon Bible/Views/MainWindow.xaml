@@ -48,7 +48,7 @@
 
                 <Button Grid.Row="1" Grid.Column="0" Margin="3, 120, 4, 330" Content="Races" FontFamily="Cambria" Background="Beige" Command="{Binding RaceButton}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-                <Button Grid.Row="1" Grid.Column="0" Margin="3, 170, 4, 280" Content="Shop" FontFamily="Cambria" Background="Beige"/>
+                <Button Grid.Row="1" Grid.Column="0" Margin="3, 170, 4, 280" Content="Shop (Coming Soon)" FontFamily="Cambria" Background="Beige"/>
 
                 <Border Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="1" Background="Black" Margin="0.5"/>
 

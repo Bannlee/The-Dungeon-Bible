@@ -1,0 +1,209 @@
+﻿<Window x:Class="The_Dungeon_Bible.Views.ViewCharacterView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:The_Dungeon_Bible.Views"
+        mc:Ignorable="d"
+            Title="Login" Height="700" Width="450" Background="#FFDFDBC8">
+
+    <Viewbox Stretch="Uniform">
+        <Grid Width="450" Height="700">
+
+            <Grid.Background>
+                <ImageBrush ImageSource="..\Images\Parchment.png"/>
+            </Grid.Background>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="210"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Width="450" Height="210" Grid.ColumnSpan="2">
+                <Grid.Background>
+                    <ImageBrush ImageSource="..\Images\ViewCharacterPicture.jpg"
+         Stretch="UniformToFill" />
+                </Grid.Background>
+            </Grid>
+
+            <Button Background="Bisque" FontFamily="Cambria" Content="Back" Margin="0,0,384,175" Command ="{Binding BackButton}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+
+            <TextBlock
+             Text="{Binding SelectedCharacter.Charname}"
+            Grid.Row="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+             FontSize="36"
+            FontFamily="Palatino Linotype"
+            FontWeight="Bold" Margin="26,10,0,0"
+            Foreground="DarkRed" Grid.Column="1"/>
+
+            <!---STATS-->
+            <Rectangle Grid.Row="1" Margin="27,76,25,350" Fill="Bisque" Stroke="DarkRed" StrokeThickness="2" Grid.ColumnSpan="2"/>
+
+            <TextBlock
+             Text="Str"
+            Grid.Row="1"
+         HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            FontFamily="Palatino Linotype"
+             FontWeight="Bold"  
+            Foreground="DarkRed" Margin="41,81,0,0"/>
+            <TextBlock
+             Text="{Binding Currentstats[0]}"
+            Grid.Row="1"
+         HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            FontFamily="Palatino Linotype"
+             FontWeight="Bold"  
+            Foreground="DarkRed" Margin="46,108,0,0"/>
+
+
+
+            <TextBlock
+            Text="Dex"
+            Grid.Row="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            FontFamily="Palatino Linotype"
+            FontWeight="Bold"  
+            Foreground="DarkRed" Margin="95,81,0,0"/>
+            <TextBlock
+             Text="{Binding Currentstats[1]}"
+            Grid.Row="1"
+         HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            FontFamily="Palatino Linotype"
+             FontWeight="Bold"  
+            Foreground="DarkRed" Margin="104,108,0,0"/>
+
+            <TextBlock
+             Text="Con"
+            FontSize="20"
+            FontFamily="Palatino Linotype"
+            FontWeight="Bold"
+            Foreground="DarkRed" Width="168" Margin="165,81,117,199" Grid.Row="1"/>
+            <TextBlock
+             Text="{Binding Currentstats[2]}"
+            Grid.Row="1"
+         HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            FontFamily="Palatino Linotype"
+             FontWeight="Bold"  
+            Foreground="DarkRed" Margin="172,108,0,0"/>
+
+
+            <TextBlock
+             Text="Int"
+            FontSize="20"
+            FontFamily="Palatino Linotype"
+            FontWeight="Bold"
+            Foreground="DarkRed" Margin="238,81,-13,272" Grid.Row="1"/>
+            <TextBlock
+             Text="{Binding Currentstats[3]}"
+            Grid.Row="1"
+         HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            FontFamily="Palatino Linotype"
+             FontWeight="Bold"  
+            Foreground="DarkRed" Margin="239,108,0,0"/>
+
+
+            <TextBlock
+             Text="Wis"
+            FontSize="20"
+            FontFamily="Palatino Linotype"
+            FontWeight="Bold"
+            Foreground="DarkRed" Margin="306,81,-16,212" Grid.Row="1"/>
+            <TextBlock
+             Text="{Binding Currentstats[4]}"
+            Grid.Row="1"
+         HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            FontFamily="Palatino Linotype"
+             FontWeight="Bold"  
+            Foreground="DarkRed" Margin="313,108,0,0"/>
+
+            <TextBlock
+             Text="Cha"
+            FontSize="20"
+            FontFamily="Palatino Linotype"
+            FontWeight="Bold"
+            Foreground="DarkRed" Margin="369,81,-19,212" Grid.Row="1"/>
+            <TextBlock
+             Text="{Binding Currentstats[5]}"
+            Grid.Row="1"
+         HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            FontFamily="Palatino Linotype"
+             FontWeight="Bold"  
+            Foreground="DarkRed" Margin="376,108,0,0"/>
+            <!--RACE AND CLASS STUFF-->
+
+            <Rectangle Grid.Row="1" Margin="27,172,25,237" Fill="Bisque" Stroke="DarkRed" StrokeThickness="2" Grid.ColumnSpan="2"/>
+            <Rectangle Grid.Row="1" Margin="26,164,268,296" Fill="Bisque" Stroke="DarkRed" StrokeThickness="2" Grid.ColumnSpan="2"/>
+            <TextBlock
+             Text="{Binding CurrentRace.RaceName}"
+            Grid.Row="1"
+         HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            FontFamily="Palatino Linotype"
+             FontWeight="Bold"  
+            Foreground="DarkRed" Margin="41,164,0,0"/>
+            <TextBlock
+             Text="{Binding CurrentRace.RacialFeature}"
+            Grid.Row="1"
+         HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="15"
+            FontFamily="Palatino Linotype"
+             FontWeight="Bold"  
+            Foreground="DarkRed" Margin="41,200,0,0"/>
+
+
+
+
+
+            <Rectangle Grid.Row="1" Margin="26,291,26,118" Fill="Bisque" Stroke="DarkRed" StrokeThickness="2" Grid.ColumnSpan="2"/>
+            <Rectangle Grid.Row="1" Margin="26,283,268,177" Fill="Bisque" Stroke="DarkRed" StrokeThickness="2" Grid.ColumnSpan="2"/>
+            <TextBlock
+             Text="{Binding CurrentClass.ClassName}"
+            Grid.Row="1"
+         HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="20"
+            FontFamily="Palatino Linotype"
+             FontWeight="Bold"  
+            Foreground="DarkRed" Margin="41,285,0,0"/>
+            <TextBlock
+             Text="{Binding CurrentClass.ClassFeature}"
+            Grid.Row="1"
+         HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="15"
+            FontFamily="Palatino Linotype"
+             FontWeight="Bold"  
+            Foreground="DarkRed" Margin="41,315,0,0"/>
+            
+            
+            
+            <!--DICE ROLLERS-->
+
+            <Button Grid.Row="1" Margin="54,398,245,40" Background="Bisque" BorderBrush="DarkRed" BorderThickness="2" Content="Roll D20" FontFamily="Cambria" FontSize="20" Command="{Binding DiceRolling}"/>
+
+            <TextBox Grid.Row="1" Margin="238,398,75,40" BorderBrush="DarkRed" BorderThickness="3" Text="{Binding diceresult}"
+             TextAlignment="Center" FontFamily="Cambria" FontSize="35"/>
+
+
+        </Grid>
+    </Viewbox>
+</Window>

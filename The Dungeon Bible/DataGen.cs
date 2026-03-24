@@ -22,10 +22,10 @@ namespace The_Dungeon_Bible
             Races = new ObservableCollection<Race>();
 
             Races.Add(new Race {RaceName = "N/A", RacialFeature = "N/A", RacialLore = "N/A" });
-            Races.Add(new Race {RaceName = "Human", RacialFeature = "Lucky. Once per Long Rest, you can reroll any d20 roll.", RacialLore = "The most numerous race in the world. They're noted for their unremarkable features." });
+            Races.Add(new Race {RaceName = "Human", RacialFeature = "Lucky. You can reroll any d20 roll once.", RacialLore = "The most numerous race in the world. They're noted for their unremarkable features." });
             Races.Add(new Race {RaceName = "Elf", RacialFeature = "Meditate. You don't need to sleep.", RacialLore = "The originators of magic. They're noted for their sharp ears." });
-            Races.Add(new Race {RaceName = "Dwarf", RacialFeature = "Tough. You have advantage on death rolls", RacialLore = "Originally called 'Mine Dwellers'. They're noted for their short but bulk stature." });
-            Races.Add(new Race {RaceName = "Halfling", RacialFeature = "Small. You have advantage on stealth rolls.", RacialLore = "Usually found as field farmers. Halflings are noted for their light and small stature." });
+            Races.Add(new Race {RaceName = "Dwarf", RacialFeature = "Tough. Advantage on death rolls", RacialLore = "Originally called 'Mine Dwellers'. They're noted for their short but bulk stature." });
+            Races.Add(new Race {RaceName = "Halfling", RacialFeature = "Small. Advantage on stealth rolls.", RacialLore = "Usually found as field farmers. Halflings are noted for their light and small stature." });
 
             Classes = new ObservableCollection<Class>();
             Classes.Add(new Class {ClassName = "N/A", ClassFeature = "N/A", HitDie = null });

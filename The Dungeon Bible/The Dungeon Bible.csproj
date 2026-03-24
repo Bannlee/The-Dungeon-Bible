@@ -20,6 +20,7 @@
     <None Remove="Images\MushroomRun.png" />
     <None Remove="Images\Parchment.png" />
     <None Remove="Images\RaceViewPicture.jpg" />
+    <None Remove="Images\ViewCharacterPicture.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,6 +41,7 @@
     <Resource Include="Images\GreenDrake.png" />
     <Resource Include="Images\MushroomRun.png" />
     <Resource Include="Images\RaceViewPicture.jpg" />
+    <Resource Include="Images\ViewCharacterPicture.jpg" />
   </ItemGroup>
 
 </Project>
