@@ -42,11 +42,11 @@
                     <ColumnDefinition Width="*"/>
 
                 </Grid.ColumnDefinitions>
-                <Button Grid.Row="1" Grid.Column="0" Margin="3, 20, 4, 430" Content="My Characters" FontFamily="Cambria" Background="Beige" Click="Button_Click"/>
+                <Button Grid.Row="1" Grid.Column="0" Margin="3, 20, 4, 430" Content="My Characters" FontFamily="Cambria" Background="Beige" Command="{Binding CharButton}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-                <Button Grid.Row="1" Grid.Column="0" Margin="3, 70, 4, 380" Content="Classes" FontFamily="Cambria" Background="Beige"/>
+                <Button Grid.Row="1" Grid.Column="0" Margin="3, 70, 4, 380" Content="Classes" FontFamily="Cambria" Background="Beige" Command="{Binding ClassButton}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-                <Button Grid.Row="1" Grid.Column="0" Margin="3, 120, 4, 330" Content="Races" FontFamily="Cambria" Background="Beige"/>
+                <Button Grid.Row="1" Grid.Column="0" Margin="3, 120, 4, 330" Content="Races" FontFamily="Cambria" Background="Beige" Command="{Binding RaceButton}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
                 <Button Grid.Row="1" Grid.Column="0" Margin="3, 170, 4, 280" Content="Shop" FontFamily="Cambria" Background="Beige"/>
 

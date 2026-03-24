@@ -18,6 +18,7 @@ namespace The_Dungeon_Bible.ViewModel
 
         public LoginVM()
         {
+            DataGen.Generate();
             CurrentUser = new UserModel();
             LoginCommand = new RelayCommand(ExecuteLogin);
         }

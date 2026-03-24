@@ -24,7 +24,6 @@ namespace The_Dungeon_Bible.Views
         public CharacterMenu()
         {
             InitializeComponent();
-            this.DataContext = new CharacterVM();
         }
     }
 }

@@ -10,15 +10,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\CharacterIcon.jpg" />
+    <None Remove="Images\ClassViewPicture.jpg" />
     <None Remove="Images\DungeonMesh1.jpg" />
     <None Remove="Images\DungeonMesh2.jpg" />
     <None Remove="Images\GreenDrake.png" />
     <None Remove="Images\MarcilleFalin.jpg" />
     <None Remove="Images\MushroomRun.png" />
     <None Remove="Images\Parchment.png" />
+    <None Remove="Images\RaceViewPicture.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\CharacterIcon.jpg" />
+    <Resource Include="Images\ClassViewPicture.jpg" />
     <Resource Include="Images\MarcilleFalin.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
@@ -32,6 +37,7 @@
     <Resource Include="Images\DungeonMesh2.jpg" />
     <Resource Include="Images\GreenDrake.png" />
     <Resource Include="Images\MushroomRun.png" />
+    <Resource Include="Images\RaceViewPicture.jpg" />
   </ItemGroup>
 
 </Project>

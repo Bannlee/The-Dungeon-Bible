@@ -10,9 +10,9 @@ namespace The_Dungeon_Bible.Model
     internal class CharacterModel : ObservableObject
     {
         private string _charname = string.Empty;
-        private string _race = string.Empty;
-        private string _class = string.Empty;
-        private int _level = 1;
+        private Race? _race = null;
+        private Class? _class = null;
+        private int[] _stats = new int[6];
 
         public string Charname
         {
@@ -27,7 +27,7 @@ namespace The_Dungeon_Bible.Model
             }
         }
 
-        public string Race
+        public Race? Charrace
         {
             get { return _race; }
             set
@@ -35,12 +35,12 @@ namespace The_Dungeon_Bible.Model
                 if (_race != value)
                 {
                     _race = value;
-                    OnPropertyChanged(nameof(Race));
+                    OnPropertyChanged(nameof(Charrace));
                 }
             }
         }
 
-        public string Class
+        public Class? Charclass
         {
 
             get { return _class; }
@@ -49,24 +49,24 @@ namespace The_Dungeon_Bible.Model
                 if (_class != value)
                 {
                     _class = value;
-                    OnPropertyChanged(nameof(Class));
+                    OnPropertyChanged(nameof(Charclass));
                 }
             }
 
         }
 
-        public int Level
+        public int[] Stats
         {
-            get { return _level; }
+            get { return _stats; }
             set
             {
-                if (_level != value)
+                if (_stats != value)
                 {
-                    _level = value;
-                    OnPropertyChanged(nameof(Level));
+                    _stats= value;
+                    OnPropertyChanged(nameof(Stats));
                 }
             }
-
         }
+
     }
 }

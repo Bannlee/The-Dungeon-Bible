@@ -6,85 +6,40 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using System.Security.Cryptography.X509Certificates;
 
 namespace The_Dungeon_Bible.ViewModel
 {
     internal class CharacterVM : ObservableObject
     {
+        public UserModel? CurrentUser { get; }
         public ObservableCollection<CharacterModel> Characterlist { get; set; }
+        public ObservableCollection<Class> Classes { get; set; }
+        public ObservableCollection<Race> Races { get; set; }
 
-        public CharacterModel newcharacter { get; set; }
-
-        private CharacterModel _selectedcharacter;
-
-        public ICommand SaveCharacter { get; set; }
-        public ICommand ClearEntries {  get; set; }
-
-        public ICommand DeleteCharacter {get; set; }
-
-        public CharacterVM()
+        public Race? Char1Race { get; set; }
+        public Race? Char2Race { get; set; }
+        public Race? Char3Race { get; set; }
+        public Class? Char1Class {  get; set; }
+        public Class? Char2Class { get; set; }
+        public Class? Char3Class { get; set; }
+       
+        public CharacterVM(UserModel? currentUser)
         {
-            Characterlist = new ObservableCollection<CharacterModel>();
+            CurrentUser = currentUser;
+            Characterlist = DataGen.Characterlist;
+            Classes = DataGen.Classes;
+            Races = DataGen.Races;
+            Char1Race = Characterlist[0].Charrace;
+            Char2Race = Characterlist[1].Charrace;
+            Char3Race = Characterlist[2].Charrace;
+            Char1Class = Characterlist[0].Charclass;
+            Char2Class = Characterlist[1].Charclass;
+            Char3Class = Characterlist[2].Charclass;
 
-            Characterlist.Add(new CharacterModel {Charname = "River", Race = "Human", Class = "Druid", Level = 5});
-            Characterlist.Add(new CharacterModel { Charname = "Sultan", Race = "Firbolg", Class = "Paladin", Level = 10 });
-            Characterlist.Add(new CharacterModel { Charname = "Wise", Race = "Dragonborn", Class = "Wizard", Level = 12 });
-
-            newcharacter = new CharacterModel();
-            SaveCharacter = new RelayCommand(ExecuteSaveCharacter);
-            ClearEntries = new RelayCommand(ExecuteClear);
-            DeleteCharacter = new RelayCommand(ExecuteDeleteCharacter);
         }
 
-     
 
-        public void ExecuteSaveCharacter(object? par)
-        {
-            Characterlist.Add(new CharacterModel { Charname = newcharacter.Charname, Race = newcharacter.Race, Class = newcharacter.Class, Level = newcharacter.Level });
-
-            newcharacter.Charname = string.Empty;
-            newcharacter.Race = string.Empty;
-            newcharacter.Class = string.Empty;
-            newcharacter.Level = 1;
-        }
-
-        public void ExecuteClear(object? par)
-        {
-            newcharacter.Charname = string.Empty;
-            newcharacter.Race = string.Empty;
-            newcharacter.Class = string.Empty;
-            newcharacter.Level = 1;
-        }
-
-        public void ExecuteDeleteCharacter(object? par)
-        {
-            Characterlist.Remove(SelectedCharacters);
-
-            newcharacter.Charname = string.Empty;
-            newcharacter.Race = string.Empty;
-            newcharacter.Class = string.Empty;
-            newcharacter.Level = 1;
-        }
-
-        public CharacterModel SelectedCharacters
-        {
-            get { return _selectedcharacter; }
-            set
-            {
-                _selectedcharacter = value;
-                OnPropertyChanged(nameof(SelectedCharacters));
-
-                if (SelectedCharacters != null)
-                {
-                    newcharacter.Charname = SelectedCharacters.Charname;
-                    newcharacter.Race = SelectedCharacters.Race;
-                    newcharacter.Class = SelectedCharacters.Class;
-                    newcharacter.Level = SelectedCharacters.Level;
-                }
-            }
-        }
-        
-            
 
 
     }

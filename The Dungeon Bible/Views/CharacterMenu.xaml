@@ -26,37 +26,72 @@
                 </Grid.Background>
             </Grid>
 
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+            <TextBlock
+             Text="My Characters"
+             Grid.Row="1"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Top"
+             FontSize="36"
+             FontFamily="Palatino Linotype"
+             FontWeight="Bold" Margin="0,10,0,0"
+             Foreground="DarkRed"/>
 
-                <DataGrid Grid.Column="1" Margin="19,53,19,233" AutoGenerateColumns="True" ItemsSource="{Binding Characterlist}" CanUserAddRows="True" Background="Beige" SelectedItem="{Binding SelectedCharacters}"/>
+            <!--THIS IS FOR CHARACTER 1-->
+            <Rectangle  Grid.Row="1" Fill="Beige" Stroke="IndianRed" Margin="25,75,24,303" StrokeThickness="3"/>
 
-                <TextBlock Text="My Characters" HorizontalAlignment="Center" Margin="0,21,0,-21" FontFamily="Cambria" FontSize="18" Grid.Column="1"/>
 
-                <TextBlock Text="Name" HorizontalAlignment="Left" Margin="55,21,0,-21" FontFamily="Cambria" FontSize="18"/>
+                <Image Source="..\Images\CharacterIcon.jpg" Margin="3,82,289,311" Grid.Row="1" />
 
-                <TextBlock Text="Race" HorizontalAlignment="Center" Margin="0,90,0,-90" FontFamily="Cambria" FontSize="18"/>
+            <StackPanel Grid.Row="1">
+                <TextBlock Grid.Row="1" Text="{Binding Characterlist[0].Charname}" Margin="135,85,0,-85" FontSize="22"
+              FontFamily="Cambria" FontWeight="Bold" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="1" Text="{Binding Char1Race.RaceName}" Margin="135,85,0,-112" FontSize="15"
+             FontFamily="Cambria" FontWeight="Bold" HorizontalAlignment="Left" Foreground="DarkRed"/>
+                
+                <TextBlock Grid.Row="1" Text="{Binding Char1Class.ClassName}" Margin="210,85,0,-112" FontSize="15"
+              FontFamily="Cambria" FontWeight="Bold" HorizontalAlignment="Left" Foreground="DarkRed"/>
+            </StackPanel>
+            <Button Grid.Row="1" Margin="319,85,44,369" FontFamily="Cambria" Content="Edit" Background="Bisque" BorderBrush="DarkRed" />
+            <Button Grid.Row="1" Margin="319,140,44,315" FontFamily="Cambria" Content="View" Background="Bisque" BorderBrush="DarkRed" />
+            
+            <!--THIS IS FOR CHARACTER 1-->
+            
+            
+            <!--THIS IS FOR CHARACTER 2-->
+            <Rectangle  Grid.Row="1" Fill="Beige" Stroke="IndianRed" Margin="24,215,24,163" StrokeThickness="3" />
 
-                <TextBlock Text="Class" HorizontalAlignment="Center" Margin="0,160,0,-160" FontFamily="Cambria" FontSize="18"/>
 
-                <TextBlock Text="Level" HorizontalAlignment="Left" Margin="57,229,0,-229" FontFamily="Cambria" FontSize="18"/>
+                <Image Source="..\Images\CharacterIcon.jpg" Margin="3,222,289,170" Grid.Row="1" />
+                
+            <StackPanel Grid.Row="1" Margin="0, 140">
+                <TextBlock Grid.Row="1" Text="{Binding Characterlist[1].Charname}" Margin="135,85,0,-85" FontSize="22"
+                FontFamily="Cambria" FontWeight="Bold" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Row="1" Text="{Binding Char2Race.RaceName}" Margin="135,85,0,-112" FontSize="15"
+                FontFamily="Cambria" FontWeight="Bold" HorizontalAlignment="Left" Foreground="DarkRed"/>
+                <TextBlock Grid.Row="1" Text="{Binding Char2Class.ClassName}" Margin="210,85,0,-112" FontSize="15"
+                 FontFamily="Cambria" FontWeight="Bold" HorizontalAlignment="Left" Foreground="DarkRed"/>
+            </StackPanel>
+            <Button Grid.Row="1" Margin="319,228,44,228" FontFamily="Cambria" Content="Edit" Background="Bisque" BorderBrush="DarkRed" />
+            <Button Grid.Row="1" Margin="319,282,44,173" FontFamily="Cambria" Content="View" Background="Bisque" BorderBrush="DarkRed" />
+            <!--THIS IS FOR CHARACTER 2-->
 
-                <TextBox Margin="4,53,4,405" Text="{Binding newcharacter.Charname}"/>
-                <TextBox Margin="4,123,4,335" Text="{Binding newcharacter.Race}"/>
-                <TextBox Margin="4,192,4,266" Text="{Binding newcharacter.Class}"/>
-                <TextBox Margin="4,258,4,200" Text="{Binding newcharacter.Level}"/>
-                <Border Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="1" Background="Black" Margin="0.5"/>
-                <Button Margin="20,266,205,200" Content="Save" Grid.Column="1" Background="Beige" Command="{Binding SaveCharacter}"/>
-                <Button Margin="112,266,112,200" Content="Delete" Grid.Column="1" Background="Beige" Command="{Binding DeleteCharacter}"/>
-                <Button Margin="205,266,20,200" Content="Clear" Grid.Column="1" Background="Beige" Command="{Binding ClearEntries}"/>
+            <!--THIS IS FOR CHARACTER 3-->
+            <Rectangle  Grid.Row="1" Fill="Beige" Stroke="IndianRed" Margin="25,351,24,27" StrokeThickness="3"/>
 
-                <Image Source="/Images/MushroomRun.png" Margin="38,135,112,-135" Grid.Column="1"/>
-                <Image Source="/Images/MushroomRun.png" Margin="170,196,36,-90" Grid.Column="1"/>
-                <Image Source="/Images/MushroomRun.png" Margin="124,236,83,-130" Grid.Column="1"/>
-            </Grid>
+                <Image Source="..\Images\CharacterIcon.jpg" Margin="2,360,290,33" Grid.Row="1" />
+
+
+            <TextBlock Grid.Row="1" Text="{Binding Characterlist[1].Charname}" Margin="135,364,0,-364" FontSize="22"
+            FontFamily="Cambria" FontWeight="Bold" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Row="1" Text="{Binding Char3Race.RaceName}" Margin="135,396,0,-423" FontSize="15"
+            FontFamily="Cambria" FontWeight="Bold" HorizontalAlignment="Left" Foreground="DarkRed"/>
+                <TextBlock Grid.Row="1" Text="{Binding Char3Class.ClassName}" Margin="210,396,0,-423" FontSize="15"
+            FontFamily="Cambria" FontWeight="Bold" HorizontalAlignment="Left" Foreground="DarkRed"/>
+
+            <Button Grid.Row="1" Margin="319,364,44,92" FontFamily="Cambria" Content="Edit" Background="Bisque" BorderBrush="DarkRed" />
+            <Button Grid.Row="1" Margin="319,417,44,38" FontFamily="Cambria" Content="View" Background="Bisque" BorderBrush="DarkRed" />
+            <!--THIS IS FOR CHARACTER 3-->
+            
 
         </Grid>
     </Viewbox>
