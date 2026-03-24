@@ -26,7 +26,7 @@
                 </Grid.Background>
             </Grid>
 
-            <Button Margin="0,0,371,180" Background="Bisque" FontFamily="Cambria" Content="Back"/>
+            <Button Margin="0,0,371,180" Background="Bisque" FontFamily="Cambria" Content="Back"  Command="{Binding BackButton}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -34,7 +34,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <DataGrid Grid.Column="1"  Margin="19,53,19,233" AutoGenerateColumns="True"  CanUserAddRows="True" Background="Beige"/>
+                <DataGrid Grid.Column="1"  Margin="19,53,19,233" AutoGenerateColumns="True"  CanUserAddRows="True" Background="Beige" ItemsSource ="{Binding Classes}" SelectedItem="{Binding SelectedClass}"/>
 
                 <TextBlock Text="Classes" HorizontalAlignment="Center" Margin="0,21,0,-21" FontFamily="Cambria" FontSize="18" Grid.Column="1"/>
 
@@ -46,15 +46,17 @@
 
 
 
-                <TextBox Margin="4,53,4,405"/>
-                <TextBox Margin="4,123,4,246"/>
-                <TextBox Margin="4,278,4,175"/>
+                <TextBox Margin="4,53,4,405" Text="{Binding newclass.ClassName}"/>
+                <TextBox Margin="4,123,4,246"  Text="{Binding newclass.ClassFeature}"/>
+                <TextBox Margin="4,278,4,175"  Text="{Binding newclass.HitDie}"/>
 
                 <Border Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="1" Background="Black" Margin="0.5"/>
 
-                <Button Margin="20,266,205,200" Content="Save" Grid.Column="1" Background="Beige"/>
-                <Button Margin="112,266,112,200" Content="Delete" Grid.Column="1" Background="Beige"/>
-                <Button Margin="205,266,20,200" Content="Clear" Grid.Column="1" Background="Beige"/>
+                <Button Margin="20,266,205,200" Content="Save" Grid.Column="1" Background="Beige" Command="{Binding SaveClass}"/>
+
+                <Button Margin="112,266,112,200" Content="Delete" Grid.Column="1" Background="Beige" Command="{Binding DeleteClass}" />
+
+                <Button Margin="205,266,20,200" Content="Clear" Grid.Column="1" Background="Beige" Command="{Binding ClearEntries}"/>
 
                 <Image Source="/Images/MushroomRun.png" Margin="38,135,112,-135" Grid.Column="1"/>
                 <Image Source="/Images/MushroomRun.png" Margin="170,196,36,-90" Grid.Column="1"/>
