@@ -52,11 +52,13 @@
 
                 <Border Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="1" Background="Black" Margin="0.5"/>
 
-                <Button Margin="20,266,205,200" Content="Save" Grid.Column="1" Background="Beige" Command="{Binding SaveClass}"/>
+                <Button Margin="20,266,232,200" Content="Save" Grid.Column="1" Background="Beige" Command="{Binding SaveClass}"/>
 
-                <Button Margin="112,266,112,200" Content="Delete" Grid.Column="1" Background="Beige" Command="{Binding DeleteClass}" />
+                <Button Margin="81,266,161,200" Content="Delete" Grid.Column="1" Background="Beige" Command="{Binding DeleteClass}" />
 
-                <Button Margin="205,266,20,200" Content="Clear" Grid.Column="1" Background="Beige" Command="{Binding ClearEntries}"/>
+                <Button Margin="150,266,95,200" Content="Update" Grid.Column="1" Background="Beige" Command="{Binding UpdateClass}" />
+
+                <Button Margin="217,266,20,200" Content="Clear" Grid.Column="1" Background="Beige" Command="{Binding ClearEntries}"/>
 
                 <Image Source="/Images/MushroomRun.png" Margin="38,135,112,-135" Grid.Column="1"/>
                 <Image Source="/Images/MushroomRun.png" Margin="170,196,36,-90" Grid.Column="1"/>

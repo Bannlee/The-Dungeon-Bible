@@ -24,8 +24,10 @@ namespace The_Dungeon_Bible.ViewModel
         public ICommand SaveRace { get; set; }
         public ICommand ClearEntries { get; set; }
         public ICommand DeleteRace {  get; set; }
+        public ICommand UpdateRace { get; set; }
 
         public ICommand BackButton { get; set; }
+
 
         public RaceVM(UserModel? currentUser)
         {
@@ -36,6 +38,22 @@ namespace The_Dungeon_Bible.ViewModel
             ClearEntries = new RelayCommand(ExecuteClear);
             DeleteRace = new RelayCommand(ExecuteDeleteRace);
             BackButton = new RelayCommand(BacktoMenu);
+            UpdateRace = new RelayCommand(ExecuteUpdateRace);
+
+        }
+
+        public void ExecuteUpdateRace(object? par)
+        {
+            int index = Races.IndexOf(SelectedRace);
+
+            if (index >= 0)
+            {
+                Race racecore = Races[index];
+
+                racecore.RaceName = newrace.RaceName;
+                racecore.RacialFeature = newrace.RacialFeature;
+                racecore.RacialLore = newrace.RacialLore;
+            }
 
         }
 

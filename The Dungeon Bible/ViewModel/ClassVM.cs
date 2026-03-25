@@ -22,6 +22,8 @@ namespace The_Dungeon_Bible.ViewModel
         public ICommand DeleteClass { get; set; }
         public ICommand BackButton { get; set; }
 
+        public ICommand UpdateClass { get; set; }
+
 
         public ClassVM(UserModel currentUser)
         {
@@ -33,6 +35,22 @@ namespace The_Dungeon_Bible.ViewModel
             ClearEntries = new RelayCommand(ExecuteClear);
             DeleteClass = new RelayCommand(ExecuteDelete);
             BackButton = new RelayCommand(BacktoMenu);
+            UpdateClass = new RelayCommand(ExecuteUpdateClass);
+        }
+
+        public void ExecuteUpdateClass(object? par)
+        {
+            int index = Classes.IndexOf(SelectedClass);
+
+            if (index >= 0)
+            {
+                Class classcore = Classes[index];
+
+                classcore.ClassName = newclass.ClassName;
+                classcore.ClassFeature = newclass.ClassFeature;
+                classcore.HitDie = newclass.HitDie;
+            }
+
         }
 
         public void ExecuteSaveClass(object? par)
