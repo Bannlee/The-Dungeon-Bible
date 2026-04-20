@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\CharacterIcon.jpg" />
     <Resource Include="Images\ClassViewPicture.jpg" />
     <Resource Include="Images\EditCharacterPicture.jpg" />

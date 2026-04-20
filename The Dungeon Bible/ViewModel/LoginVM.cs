@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Microsoft.Data.SqlClient;
 
 namespace The_Dungeon_Bible.ViewModel
 {
@@ -23,10 +24,41 @@ namespace The_Dungeon_Bible.ViewModel
             LoginCommand = new RelayCommand(ExecuteLogin);
         }
 
-        private void ExecuteLogin(object? parameter)
+        private async void ExecuteLogin(object? parameter)
         {
-          
-            if (CurrentUser.Username.Trim() == "admin" && CurrentUser.Password.Trim() == "1234") 
+
+            string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
+            bool isLoginValid = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT * FROM Users WHERE Username = @username AND Password = @password";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        await connection.OpenAsync();
+                        command.Parameters.AddWithValue("@username", CurrentUser.Username);
+                        command.Parameters.AddWithValue("@password", CurrentUser.Password);
+
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            if (reader.HasRows)
+                            {
+                                isLoginValid = true;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database connection failed: " + ex.Message);
+                return;
+            }
+
+            if (isLoginValid) 
             {
                 var MainWindowViewModel = new MainWindowVM(CurrentUser);
                 var login = new Views.MainWindow();
@@ -35,7 +67,13 @@ namespace The_Dungeon_Bible.ViewModel
                 login.Show();
                 Application.Current.MainWindow.Close();
             }
-            
+            else
+            {
+                MessageBox.Show("Invalid Username or Password.", "Error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+
 
         }
     }

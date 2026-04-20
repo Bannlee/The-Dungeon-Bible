@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -36,31 +37,95 @@ namespace The_Dungeon_Bible.ViewModel
             DeleteClass = new RelayCommand(ExecuteDelete);
             BackButton = new RelayCommand(BacktoMenu);
             UpdateClass = new RelayCommand(ExecuteUpdateClass);
+
         }
 
-        public void ExecuteUpdateClass(object? par)
+        public async void ExecuteUpdateClass(object? par)
         {
             int index = Classes.IndexOf(SelectedClass);
+            Class classcore = Classes[index];
+            string target = classcore.ClassName;
 
             if (index >= 0)
-            {
-                Class classcore = Classes[index];
-
+            {              
                 classcore.ClassName = newclass.ClassName;
                 classcore.ClassFeature = newclass.ClassFeature;
                 classcore.HitDie = newclass.HitDie;
             }
 
-        }
+            string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "UPDATE CClasses SET ClassName = @classname, ClassFeature = @classfeature, HitDie = @hitdie WHERE ClassName = @classcore;";
 
-        public void ExecuteSaveClass(object? par)
-        {
-            Classes.Add(new Class {ClassName = newclass.ClassName, ClassFeature = newclass.ClassFeature, HitDie = newclass.HitDie});
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        await connection.OpenAsync();
+
+                        command.Parameters.AddWithValue("@classname", newclass.ClassName);
+                        command.Parameters.AddWithValue("@classfeature", newclass.ClassFeature);
+                        command.Parameters.AddWithValue("@hitdie", newclass.HitDie);
+                        command.Parameters.AddWithValue("@classcore", target);
+
+                        await command.ExecuteNonQueryAsync();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database connection failed: " + ex.Message);
+                return;
+            }
 
             newclass.ClassName = string.Empty;
             newclass.ClassFeature = string.Empty;
             newclass.HitDie = 0;
-            
+
+
+        }
+
+        public async void ExecuteSaveClass(object? par)
+        {
+            if (newclass.ClassName != string.Empty && newclass.ClassFeature != string.Empty)
+            {
+                Classes.Add(new Class { ClassName = newclass.ClassName, ClassFeature = newclass.ClassFeature, HitDie = newclass.HitDie });
+                
+                string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        string query = "INSERT INTO CClasses (ClassName,ClassFeature,HitDie) VALUES (@classname,@classfeature,@hitdie);";
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            await connection.OpenAsync();
+
+                            command.Parameters.AddWithValue("@classname", newclass.ClassName);
+                            command.Parameters.AddWithValue("@classfeature", newclass.ClassFeature);
+                            command.Parameters.AddWithValue("@hitdie", newclass.HitDie);
+
+                           await command.ExecuteNonQueryAsync();
+
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Database connection failed: " + ex.Message);
+                    return;
+                }
+
+                newclass.ClassName = string.Empty;
+                newclass.ClassFeature = string.Empty;
+                newclass.HitDie = 0;
+
+            }
+
         }
 
         public void ExecuteClear(object? par) 
@@ -70,10 +135,38 @@ namespace The_Dungeon_Bible.ViewModel
             newclass.HitDie = 0;
         }
 
-        public void ExecuteDelete(object? par)
+        public async void ExecuteDelete(object? par)
         {
-            Classes.Remove(SelectedClass);
+            
+            if (newclass.ClassName != string.Empty && newclass.ClassFeature != string.Empty)
+            {
 
+                string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        string query = "DELETE FROM CClasses WHERE ClassName = @classname;";
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            await connection.OpenAsync();
+
+                            command.Parameters.AddWithValue("@classname", newclass.ClassName);
+
+                            int rows = await command.ExecuteNonQueryAsync();
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Database connection failed: " + ex.Message);
+                    return;
+                }
+
+            }
+            Classes.Remove(SelectedClass);
             newclass.ClassName = string.Empty;
             newclass.ClassFeature = string.Empty;
             newclass.HitDie = 0;
@@ -107,6 +200,8 @@ namespace The_Dungeon_Bible.ViewModel
             MainWindowView.Show();
             window?.Close();
         }
+
+       
     }
 }
 
