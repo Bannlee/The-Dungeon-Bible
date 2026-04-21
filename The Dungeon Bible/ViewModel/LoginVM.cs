@@ -21,10 +21,10 @@ namespace The_Dungeon_Bible.ViewModel
         {
             DataGen.Generate();
             CurrentUser = new UserModel();
-            LoginCommand = new RelayCommand(ExecuteLogin);
+            LoginCommand = new AsyncRelayCommand(ExecuteLogin);
         }
 
-        private async void ExecuteLogin(object? parameter)
+        private async Task ExecuteLogin(object? parameter)
         {
 
             string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";

@@ -32,15 +32,15 @@ namespace The_Dungeon_Bible.ViewModel
             Classes = DataGen.Classes;
             newclass = new Class();
 
-            SaveClass = new RelayCommand(ExecuteSaveClass);
+            SaveClass = new AsyncRelayCommand(ExecuteSaveClass);
             ClearEntries = new RelayCommand(ExecuteClear);
-            DeleteClass = new RelayCommand(ExecuteDelete);
+            DeleteClass = new AsyncRelayCommand(ExecuteDelete);
             BackButton = new RelayCommand(BacktoMenu);
-            UpdateClass = new RelayCommand(ExecuteUpdateClass);
+            UpdateClass = new AsyncRelayCommand(ExecuteUpdateClass);
 
         }
 
-        public async void ExecuteUpdateClass(object? par)
+        public async Task ExecuteUpdateClass(object? par)
         {
             int index = Classes.IndexOf(SelectedClass);
             Class classcore = Classes[index];
@@ -87,7 +87,7 @@ namespace The_Dungeon_Bible.ViewModel
 
         }
 
-        public async void ExecuteSaveClass(object? par)
+        public async Task ExecuteSaveClass(object? par)
         {
             if (newclass.ClassName != string.Empty && newclass.ClassFeature != string.Empty)
             {
@@ -135,7 +135,7 @@ namespace The_Dungeon_Bible.ViewModel
             newclass.HitDie = 0;
         }
 
-        public async void ExecuteDelete(object? par)
+        public async Task ExecuteDelete(object? par)
         {
             
             if (newclass.ClassName != string.Empty && newclass.ClassFeature != string.Empty)

@@ -25,6 +25,37 @@ namespace The_Dungeon_Bible
             string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
             Races = new ObservableCollection<Race>();
 
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT * FROM Races";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        await connection.OpenAsync();
+
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                Race newrace = new Race();
+                                newrace.RaceName = reader["RaceName"]?.ToString() ?? String.Empty;
+                                newrace.RacialFeature = reader["RacialFeature"]?.ToString() ?? String.Empty;
+                                newrace.RacialLore = reader["RacialLore"]?.ToString() ?? String.Empty;
+
+                                Races.Add(newrace);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database connection failed: " + ex.Message);
+                return;
+            }
+
             //Races.Add(new Race {RaceName = "N/A", RacialFeature = "N/A", RacialLore = "N/A" });
             //Races.Add(new Race {RaceName = "Human", RacialFeature = "Lucky. You can reroll any d20 roll once.", RacialLore = "The most numerous race in the world. They're noted for their unremarkable features." });
             //Races.Add(new Race {RaceName = "Elf", RacialFeature = "Meditate. You don't need to sleep.", RacialLore = "The originators of magic. They're noted for their sharp ears." });

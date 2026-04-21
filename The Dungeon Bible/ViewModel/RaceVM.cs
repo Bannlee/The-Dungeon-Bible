@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media.TextFormatting;
 using System.Windows;
+using Microsoft.Data.SqlClient;
 
 
 namespace The_Dungeon_Bible.ViewModel 
@@ -34,38 +35,95 @@ namespace The_Dungeon_Bible.ViewModel
             CurrentUser = currentUser;
             Races = DataGen.Races;
             newrace = new Race();
-            SaveRace = new RelayCommand(ExecuteSaveRace);
+            SaveRace = new AsyncRelayCommand(ExecuteSaveRace);
             ClearEntries = new RelayCommand(ExecuteClear);
-            DeleteRace = new RelayCommand(ExecuteDeleteRace);
+            DeleteRace = new AsyncRelayCommand(ExecuteDeleteRace);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
             BackButton = new RelayCommand(BacktoMenu);
-            UpdateRace = new RelayCommand(ExecuteUpdateRace);
+            UpdateRace = new AsyncRelayCommand(ExecuteUpdateRace);
 
         }
 
-        public void ExecuteUpdateRace(object? par)
+        public async Task ExecuteUpdateRace(object? par)
         {
             int index = Races.IndexOf(SelectedRace);
+            Race racecore = Races[index];
+            string target = racecore.RaceName;
 
             if (index >= 0)
             {
-                Race racecore = Races[index];
-
                 racecore.RaceName = newrace.RaceName;
                 racecore.RacialFeature = newrace.RacialFeature;
                 racecore.RacialLore = newrace.RacialLore;
             }
 
+            string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "UPDATE Races SET RaceName = @racename, RacialFeature = @racefeature, RacialLore = @racelore WHERE RaceName = @racecore;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        await connection.OpenAsync();
+
+                        command.Parameters.AddWithValue("@racename", newrace.RaceName);
+                        command.Parameters.AddWithValue("@racefeature", newrace.RacialFeature);
+                        command.Parameters.AddWithValue("@racelore", newrace.RacialLore);
+                        command.Parameters.AddWithValue("@racecore", target);
+
+                        await command.ExecuteNonQueryAsync();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database connection failed: " + ex.Message);
+                return;
+            }
         }
 
-        public void ExecuteSaveRace(object? par)
+        public async Task ExecuteSaveRace(object? par)
         {
-            Races.Add(new Race { RaceName = newrace.RaceName, RacialFeature = newrace.RacialFeature, RacialLore = newrace.RacialLore });
+            if (newrace.RaceName != string.Empty && newrace.RacialFeature != string.Empty)
+            {
+                Races.Add(new Race { RaceName = newrace.RaceName, RacialFeature = newrace.RacialFeature, RacialLore = newrace.RacialLore });
 
-           newrace.RaceName = string.Empty;
-           newrace.RacialFeature = string.Empty;
-           newrace.RacialLore= string.Empty; 
+                string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        string query = "INSERT INTO Races (RaceName,RacialFeature,RacialLore) VALUES (@racename,@racefeature,@racelore);";
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            await connection.OpenAsync();
+
+                            command.Parameters.AddWithValue("@racename", newrace.RaceName);
+                            command.Parameters.AddWithValue("@racefeature", newrace.RacialFeature);
+                            command.Parameters.AddWithValue("@racelore", newrace.RacialLore);
+
+                            await command.ExecuteNonQueryAsync();
+
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Database connection failed: " + ex.Message);
+                    return;
+                }
+
+                newrace.RaceName = string.Empty;
+                newrace.RacialFeature = string.Empty;
+                newrace.RacialLore = string.Empty;
+
+            }
+
         }
-
         public void ExecuteClear(object? par) 
         {
             newrace.RaceName = string.Empty;
@@ -73,14 +131,44 @@ namespace The_Dungeon_Bible.ViewModel
             newrace.RacialLore = string.Empty;
         }
 
-        public void ExecuteDeleteRace(object? par)
+        public async Task ExecuteDeleteRace(object? par)
         {
-            Races.Remove(SelectedRace);
+            if (newrace.RaceName != string.Empty && newrace.RacialFeature != string.Empty)
+            {
 
+                string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        string query = "DELETE FROM Races WHERE RaceName = @racename;";
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            await connection.OpenAsync();
+
+                            command.Parameters.AddWithValue("@racename", newrace.RaceName);
+
+                            int rows = await command.ExecuteNonQueryAsync();
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Database connection failed: " + ex.Message);
+                    return;
+                }
+
+            }
+            Races.Remove(SelectedRace);
             newrace.RaceName = string.Empty;
             newrace.RacialFeature = string.Empty;
             newrace.RacialLore = string.Empty;
+
+
         }
+       
 
         public Race SelectedRace
         {
