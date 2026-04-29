@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.TextFormatting;
@@ -20,10 +21,13 @@ namespace The_Dungeon_Bible
         public static ObservableCollection<Class> Classes { get; set; }
         public static ObservableCollection<CharacterModel> Characterlist { get; set; }
 
-        public static async Task Generate()
+        public static UserModel CurrentUser { get; set; }
+
+        public static async Task Generate(UserModel currentuser)
         {
-            string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
+            string connectionString = @"Server=LAPTOP-SM2BQGTD;Database=Dungeon Database;Trusted_Connection=True;TrustServerCertificate=True;";
             Races = new ObservableCollection<Race>();
+            CurrentUser = currentuser;
 
             try
             {
@@ -102,10 +106,52 @@ namespace The_Dungeon_Bible
 
             Characterlist = new ObservableCollection<CharacterModel>();
 
-                //Characterlist.Add(new CharacterModel { Charname = "River Chen", Charrace = Races[1], Charclass = Classes[2], Stats = new int[] { 10, 12, 14, 8, 13, 9 } });
-                //Characterlist.Add(new CharacterModel { Charname = "New Character", Charrace = Races[0], Charclass = Classes[0], Stats = new int[] { 0, 0, 0, 0, 0, 0 } });
-                //Characterlist.Add(new CharacterModel { Charname = "New Character", Charrace = Races[0], Charclass = Classes[0], Stats = new int[] { 0, 0, 0, 0, 0, 0 } });
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT * FROM Characters";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        await connection.OpenAsync();
+
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                CharacterModel newchar = new CharacterModel();
+                                newchar.Charname = reader["CharName"]?.ToString() ?? String.Empty;
+                                newchar.Charrace = Races[int.Parse(reader["Raceid"]?.ToString() ?? String.Empty)];
+                                newchar.Charclass = Classes[int.Parse(reader["Classid"]?.ToString() ?? String.Empty)];
+                                newchar.Level = int.Parse(reader["Level"]?.ToString() ?? "1");
+
+                                int[] stats = reader["Stat"]?.ToString().Split(',').Select(int.Parse).ToArray();
+                                newchar.Stats = stats;
+
+                                int con = stats[2];
+                                newchar.Maxhp = newchar.Level * con;
+                                newchar.Users = reader["Users"]?.ToString() ?? String.Empty;
+
+
+                                if (CurrentUser.Username == newchar.Users) 
+                                    Characterlist.Add(newchar);
+                                
+                                }
+                            }
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database connection failed: " + ex.Message);
+                return;
+            }
+
+            //Characterlist.Add(new CharacterModel { Charname = "River Chen", Charrace = Races[0], Charclass = Classes[0], Stats = new int[] { 10, 12, 14, 8, 13, 9 } });
+            //Characterlist.Add(new CharacterModel { Charname = "New Character", Charrace = Races[0], Charclass = Classes[0], Stats = new int[] { 0, 0, 0, 0, 0, 0 } });
+            //Characterlist.Add(new CharacterModel { Charname = "New Character", Charrace = Races[0], Charclass = Classes[0], Stats = new int[] { 0, 0, 0, 0, 0, 0 } });
+        }
     }
 
 }

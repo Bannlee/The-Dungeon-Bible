@@ -53,7 +53,7 @@ namespace The_Dungeon_Bible.ViewModel
                 classcore.HitDie = newclass.HitDie;
             }
 
-            string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
+            string connectionString = @"Server=LAPTOP-SM2BQGTD;Database=Dungeon Database;Trusted_Connection=True;TrustServerCertificate=True;";
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -92,8 +92,8 @@ namespace The_Dungeon_Bible.ViewModel
             if (newclass.ClassName != string.Empty && newclass.ClassFeature != string.Empty)
             {
                 Classes.Add(new Class { ClassName = newclass.ClassName, ClassFeature = newclass.ClassFeature, HitDie = newclass.HitDie });
-                
-                string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
+
+                string connectionString = @"Server=LAPTOP-SM2BQGTD;Database=Dungeon Database;Trusted_Connection=True;TrustServerCertificate=True;";
                 try
                 {
                     using (SqlConnection connection = new SqlConnection(connectionString))
@@ -141,7 +141,7 @@ namespace The_Dungeon_Bible.ViewModel
             if (newclass.ClassName != string.Empty && newclass.ClassFeature != string.Empty)
             {
 
-                string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
+                string connectionString = @"Server=LAPTOP-SM2BQGTD;Database=Dungeon Database;Trusted_Connection=True;TrustServerCertificate=True;";
                 try
                 {
                     using (SqlConnection connection = new SqlConnection(connectionString))
@@ -172,8 +172,6 @@ namespace The_Dungeon_Bible.ViewModel
             newclass.HitDie = 0;
 
         }
-
-
         public Class SelectedClass
         {
             get { return selectedclass; }
@@ -187,7 +185,6 @@ namespace The_Dungeon_Bible.ViewModel
                 }
             }
         }
-
         private void BacktoMenu(object? parameter)
         {
             DataGen.Classes = Classes;

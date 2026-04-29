@@ -41,20 +41,26 @@
                 <TextBlock Text="Edit Character" HorizontalAlignment="Center" Margin="0,10,0,-10" FontFamily="Cambria" FontSize="20" Width="128"/>
                 <TextBlock Text="Stats" HorizontalAlignment="Left" Margin="59,10,0,-10" FontFamily="Cambria" FontSize="20" Width="128" Grid.Column="1"/>
 
-                <TextBlock Text="Name" HorizontalAlignment="Left" Margin="15,108,0,-108" FontFamily="Cambria" FontSize="18" Width="110"/>
-                <TextBlock Text="Race" HorizontalAlignment="Left" Margin="15,195,0,-195" FontFamily="Cambria" FontSize="18" Width="110"/>
-                <TextBlock Text="Class" HorizontalAlignment="Left" Margin="15,277,0,-277" FontFamily="Cambria" FontSize="18" Width="110"/>
+                <TextBlock Text="Name" HorizontalAlignment="Left" Margin="15,55,0,-56" FontFamily="Cambria" FontSize="18" Width="110"/>
+                <TextBlock Text="Race" HorizontalAlignment="Left" Margin="15,131,0,-131" FontFamily="Cambria" FontSize="18" Width="110"/>
+                <TextBlock Text="Class" HorizontalAlignment="Left" Margin="15,212,0,-212" FontFamily="Cambria" FontSize="18" Width="110"/>
+                <TextBlock Text="Class" HorizontalAlignment="Left" Margin="15,212,0,-212" FontFamily="Cambria" FontSize="18" Width="110"/>
+                <TextBlock Text="Level" HorizontalAlignment="Left" Margin="15,283,0,-283" FontFamily="Cambria" FontSize="18" Width="110"/>
 
-                <TextBox Margin="15,136,15,316" Text="{Binding SelectedCharacter.Charname}"/>
+                <TextBox Margin="15,86,15,366" Text="{Binding SelectedCharacter.Charname}"/>
 
-                <ComboBox Margin="15,221,15,235" ItemsSource="{Binding Races}"
+                <ComboBox Margin="15,164,15,292" ItemsSource="{Binding Races}"
              SelectedItem="{Binding SelectedCharacter.Charrace}"
              DisplayMemberPath="RaceName"/>
 
-                <ComboBox Margin="15,305,15,151"
+                <ComboBox Margin="15,238,15,218"
                 ItemsSource="{Binding Classes}"
                 SelectedItem="{Binding SelectedCharacter.Charclass}"
                 DisplayMemberPath="ClassName"/>
+
+                <TextBox Margin="15,304,145,153" Text="{Binding SelectedCharacter.Level}"/>
+
+
 
                 <!--STATS AREA-->
 
@@ -72,7 +78,7 @@
 
 
                 <TextBlock Grid.Column="1" Text="Intelligence" FontFamily="Cambria" FontSize="18" Margin="0,255,0,-255" HorizontalAlignment="Center"/>
-                <TextBox Grid.Column="1" Margin="16,284,10,173" Text="{Binding Currentstats[3]}"/>
+                <TextBox Margin="13,287,13,170" Text="{Binding Currentstats[3]}" Grid.Column="1"/>
 
 
                 <TextBlock Grid.Column="1" Text="Wisdom" FontFamily="Cambria" FontSize="18" Margin="0,322,0,-322" HorizontalAlignment="Center"/>

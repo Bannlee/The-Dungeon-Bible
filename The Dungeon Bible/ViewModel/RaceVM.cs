@@ -56,7 +56,7 @@ namespace The_Dungeon_Bible.ViewModel
                 racecore.RacialLore = newrace.RacialLore;
             }
 
-            string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
+            string connectionString = @"Server=LAPTOP-SM2BQGTD;Database=Dungeon Database;Trusted_Connection=True;TrustServerCertificate=True;";
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -90,7 +90,7 @@ namespace The_Dungeon_Bible.ViewModel
             {
                 Races.Add(new Race { RaceName = newrace.RaceName, RacialFeature = newrace.RacialFeature, RacialLore = newrace.RacialLore });
 
-                string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
+                string connectionString = @"Server=LAPTOP-SM2BQGTD;Database=Dungeon Database;Trusted_Connection=True;TrustServerCertificate=True;";
                 try
                 {
                     using (SqlConnection connection = new SqlConnection(connectionString))
@@ -136,7 +136,7 @@ namespace The_Dungeon_Bible.ViewModel
             if (newrace.RaceName != string.Empty && newrace.RacialFeature != string.Empty)
             {
 
-                string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
+                string connectionString = @"Server=LAPTOP-SM2BQGTD;Database=Dungeon Database;Trusted_Connection=True;TrustServerCertificate=True;";
                 try
                 {
                     using (SqlConnection connection = new SqlConnection(connectionString))

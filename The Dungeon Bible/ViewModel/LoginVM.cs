@@ -18,8 +18,7 @@ namespace The_Dungeon_Bible.ViewModel
         public ICommand LoginCommand { get; set; }
 
         public LoginVM()
-        {
-            DataGen.Generate();
+        {           
             CurrentUser = new UserModel();
             LoginCommand = new AsyncRelayCommand(ExecuteLogin);
         }
@@ -27,7 +26,7 @@ namespace The_Dungeon_Bible.ViewModel
         private async Task ExecuteLogin(object? parameter)
         {
 
-            string connectionString = @"Server=CCL2-09;Database=Dungeon Database;User Id=sa;Password=ccl2;TrustServerCertificate=True;";
+            string connectionString = @"Server=LAPTOP-SM2BQGTD;Database=Dungeon Database;Trusted_Connection=True;TrustServerCertificate=True;";
             bool isLoginValid = false;
 
             try
@@ -60,6 +59,7 @@ namespace The_Dungeon_Bible.ViewModel
 
             if (isLoginValid) 
             {
+                DataGen.Generate(CurrentUser);
                 var MainWindowViewModel = new MainWindowVM(CurrentUser);
                 var login = new Views.MainWindow();
 

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Microsoft.Data.SqlClient;
 using The_Dungeon_Bible.Model;
 
 namespace The_Dungeon_Bible.ViewModel
@@ -19,10 +21,14 @@ namespace The_Dungeon_Bible.ViewModel
         public ObservableCollection<Race> Races { get; set; }
         public ObservableCollection<CharacterModel> Characterlist { get; set; }
 
+      
+
 
         public string savemessage { get; set; }
 
         public int[] Currentstats { get; set; }
+
+        public string connectionString { get; set; }
 
         public ICommand SaveChar {  get; set; }
         public ICommand ClearEntries {  get; set; }
@@ -31,6 +37,8 @@ namespace The_Dungeon_Bible.ViewModel
 
         public EditCharacterVM(CharacterModel character, UserModel currentuser)
         {
+
+            connectionString = @"Server=LAPTOP-SM2BQGTD;Database=Dungeon Database;Trusted_Connection=True;TrustServerCertificate=True;";
             CurrentUser = currentuser;
             SelectedCharacter = character;
             Classes = DataGen.Classes;
@@ -44,7 +52,7 @@ namespace The_Dungeon_Bible.ViewModel
             Return = new RelayCommand(MoveToCharacters);
         }
 
-        public void ExecuteSaveChar(object? par)
+        public async void ExecuteSaveChar(object? par)
         {
             int index = Characterlist.IndexOf(SelectedCharacter);
 
@@ -64,6 +72,9 @@ namespace The_Dungeon_Bible.ViewModel
             Currentstats[4],
             Currentstats[5]
                 };
+                character.Level = SelectedCharacter.Level;
+                character.Maxhp = character.Level * character.Stats[2];
+                
 
                 savemessage = "Saved!";
                 OnPropertyChanged(nameof(savemessage));
@@ -71,6 +82,43 @@ namespace The_Dungeon_Bible.ViewModel
             else
             {
                 MessageBox.Show("Error: Character not found in list.");
+            }
+            // ----------------------------
+
+            CharacterModel charactercore = Characterlist[index];
+            string target = charactercore.Charname;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "UPDATE Characters SET Charname = @charname, Raceid = @charrace, Classid = @charclass, Stat = @Stat, Level = @level, CurrentHP = @currenthp, MaxHP = @maxhp WHERE Charname = @charactercore ";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        await connection.OpenAsync();
+
+                        command.Parameters.AddWithValue("@charname", SelectedCharacter.Charname);
+                        int raceIndex = Races.IndexOf(SelectedCharacter.Charrace);
+                        command.Parameters.AddWithValue("@charrace", raceIndex);
+                        int classIndex = Classes.IndexOf(SelectedCharacter.Charclass);
+                        command.Parameters.AddWithValue("@charclass", classIndex);
+                        command.Parameters.AddWithValue("@charactercore", target);
+                        string stattoupload = $"{Currentstats[0]},{Currentstats[1]},{Currentstats[2]},{Currentstats[3]},{Currentstats[4]},{Currentstats[5]}";
+                        command.Parameters.AddWithValue("@Stat", stattoupload);
+                        command.Parameters.AddWithValue("@level", SelectedCharacter.Level);
+                        command.Parameters.AddWithValue("@currenthp", SelectedCharacter.Currenthp);
+                        command.Parameters.AddWithValue("@maxhp", SelectedCharacter.Maxhp);
+
+
+                        await command.ExecuteNonQueryAsync();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database connection failed: " + ex.Message);
+                return;
             }
         }
 
