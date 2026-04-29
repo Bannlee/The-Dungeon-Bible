@@ -80,34 +80,34 @@ namespace The_Dungeon_Bible.ViewModel
 
         private void MoveToCharacters(object? parameter)
         {
+            Savehp();
             var window = parameter as Window;
 
             var CharWindowVM = new CharacterVM(CurrentUser);
             var CharWindowView = new Views.CharacterMenu();
 
+            
             CharWindowView.DataContext = CharWindowVM;
-            CharWindowView.Show();
+            CharWindowView.Show();           
             window?.Close();
+
         }
 
         public async void Savehp()
         {
-            int index = Characterlist.IndexOf(SelectedCharacter);
-            CharacterModel charactercore = Characterlist[index];
-            string target = charactercore.Charname;
             try
             {
                 string connectionString = @"Server=LAPTOP-SM2BQGTD;Database=Dungeon Database;Trusted_Connection=True;TrustServerCertificate=True;";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "UPDATE Characters SET CurrentHP = @currenthp WHERE Charname = @charactercore";
+                    string query = "UPDATE Characters SET CurrentHP = @currenthp WHERE CharacterId = @characterid";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         await connection.OpenAsync();
 
                         command.Parameters.AddWithValue("@currenthp", SelectedCharacter.Currenthp);
-                        command.Parameters.AddWithValue("@charactercore", target);                       
+                        command.Parameters.AddWithValue("@characterid", SelectedCharacter.CharacterID);                       
                         await command.ExecuteNonQueryAsync();
 
                     }

@@ -40,13 +40,17 @@
 
             <Button Grid.Row="1" Margin="54,428,278,36" Background="Bisque" BorderBrush="DarkRed" BorderThickness="2" Content="Roll Dice" FontFamily="Cambria" FontSize="20" Command="{Binding DiceRolling}"/>
 
+            <Image Source="{Binding SelectedCharacter.Images}"    Width="100"
+             Height="100"
+           Stretch="UniformToFill" Margin="0,110,350,0"/>
+
             <!---HP-->
             <Rectangle Margin="306,170,0,0" Fill="Bisque" Stroke="DarkRed" StrokeThickness="2"/>
 
             <TextBlock Text="{Binding SelectedCharacter.Maxhp}" FontSize="17" FontFamily="Palatino Linotype" FontWeight="Bold"            Foreground="DarkRed" Margin="375,176,10,6"/>
 
             <TextBox Margin="312,176,81,6" FontSize="17" FontFamily="Palatino Linotype" FontWeight="Bold"            Foreground="DarkRed"
-              Text="{Binding SelectedCharacter.Currenthp}"/>
+              Text="{Binding SelectedCharacter.Currenthp, UpdateSourceTrigger=PropertyChanged}"/>
 
 
             <!---STATS-->

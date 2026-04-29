@@ -130,8 +130,11 @@ namespace The_Dungeon_Bible
                                 newchar.Stats = stats;
 
                                 int con = stats[2];
+                                newchar.Currenthp = int.Parse(reader["CurrentHP"].ToString() ?? "1");
                                 newchar.Maxhp = newchar.Level * con;
                                 newchar.Users = reader["Users"]?.ToString() ?? String.Empty;
+                                newchar.Images = reader["Images"]?.ToString() ?? String.Empty;
+                                newchar.CharacterID = int.Parse(reader["CharacterId"]?.ToString() ?? "0");
 
 
                                 if (CurrentUser.Username == newchar.Users) 

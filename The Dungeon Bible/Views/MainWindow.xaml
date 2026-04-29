@@ -48,8 +48,6 @@
 
                 <Button Grid.Row="1" Grid.Column="0" Margin="3, 120, 4, 330" Content="Races" FontFamily="Cambria" Background="Beige" Command="{Binding RaceButton}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-                <Button Grid.Row="1" Grid.Column="0" Margin="3, 170, 4, 280" Content="Shop (Coming Soon)" FontFamily="Cambria" Background="Beige"/>
-
                 <Border Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="1" Background="Black" Margin="0.5"/>
 
                 <Image Source="..\Images\GreenDrake.png"
@@ -89,7 +87,7 @@ FontFamily="Cambria"
 FontWeight="Bold" Margin="37,98,0,0"
 Foreground="Black"/>
 
-                <TextBlock Grid.Column="1" FontFamily="Cambria" FontSize="10" Margin="0,120,0,-30" HorizontalAlignment="Center" >
+                <TextBlock Grid.Column="1" FontFamily="Cambria" FontSize="12" Margin="0,118,0,-28" HorizontalAlignment="Center" >
                    The Dungeon Bible is application that helps players
                     <LineBreak/>
                    manage their Dungeons and Dragons characters by 

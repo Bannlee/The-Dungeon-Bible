@@ -17,6 +17,8 @@ namespace The_Dungeon_Bible.Model
         private int _currenthp = 1;
         private int _maxhp = 1;
         private string _users = string.Empty;
+        private string _images = string.Empty;
+        private int _characterid = 0;
 
         public string Charname
         {
@@ -119,6 +121,32 @@ namespace The_Dungeon_Bible.Model
                 {
                     _users = value;
                     OnPropertyChanged(nameof(Users));
+                }
+            }
+        }
+
+        public string Images
+        {
+            get { return _images; }
+            set
+            {
+                if (_images != value)
+                {
+                    _images = value;
+                    OnPropertyChanged(nameof(Images));
+                }
+            }
+        }
+
+        public int CharacterID
+        {
+            get { return _characterid; }
+            set
+            {
+                if (_characterid != value)
+                {
+                    _characterid = value;
+                    OnPropertyChanged(nameof(CharacterID));
                 }
             }
         }

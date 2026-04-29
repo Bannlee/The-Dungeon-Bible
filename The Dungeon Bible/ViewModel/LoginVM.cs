@@ -25,7 +25,11 @@ namespace The_Dungeon_Bible.ViewModel
 
         private async Task ExecuteLogin(object? parameter)
         {
-
+            var password = parameter as PasswordBox;
+            if (password != null)
+            {
+                CurrentUser.Password = password.Password;
+            }
             string connectionString = @"Server=LAPTOP-SM2BQGTD;Database=Dungeon Database;Trusted_Connection=True;TrustServerCertificate=True;";
             bool isLoginValid = false;
 

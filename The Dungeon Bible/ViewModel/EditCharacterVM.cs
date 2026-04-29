@@ -74,6 +74,7 @@ namespace The_Dungeon_Bible.ViewModel
                 };
                 character.Level = SelectedCharacter.Level;
                 character.Maxhp = character.Level * character.Stats[2];
+                character.Images = SelectedCharacter.Images;
                 
 
                 savemessage = "Saved!";
@@ -86,12 +87,12 @@ namespace The_Dungeon_Bible.ViewModel
             // ----------------------------
 
             CharacterModel charactercore = Characterlist[index];
-            string target = charactercore.Charname;
+            
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "UPDATE Characters SET Charname = @charname, Raceid = @charrace, Classid = @charclass, Stat = @Stat, Level = @level, CurrentHP = @currenthp, MaxHP = @maxhp WHERE Charname = @charactercore ";
+                    string query = "UPDATE Characters SET Charname = @charname, Raceid = @charrace, Classid = @charclass, Stat = @Stat, Level = @level, CurrentHP = @currenthp, MaxHP = @maxhp, Images = @images WHERE CharacterId = @characterid ";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -102,18 +103,21 @@ namespace The_Dungeon_Bible.ViewModel
                         command.Parameters.AddWithValue("@charrace", raceIndex);
                         int classIndex = Classes.IndexOf(SelectedCharacter.Charclass);
                         command.Parameters.AddWithValue("@charclass", classIndex);
-                        command.Parameters.AddWithValue("@charactercore", target);
+                        command.Parameters.AddWithValue("@characterid", SelectedCharacter.CharacterID);
                         string stattoupload = $"{Currentstats[0]},{Currentstats[1]},{Currentstats[2]},{Currentstats[3]},{Currentstats[4]},{Currentstats[5]}";
                         command.Parameters.AddWithValue("@Stat", stattoupload);
                         command.Parameters.AddWithValue("@level", SelectedCharacter.Level);
                         command.Parameters.AddWithValue("@currenthp", SelectedCharacter.Currenthp);
                         command.Parameters.AddWithValue("@maxhp", SelectedCharacter.Maxhp);
+                        command.Parameters.AddWithValue("@images", SelectedCharacter.Images);
 
 
                         await command.ExecuteNonQueryAsync();
 
                     }
                 }
+
+                MessageBox.Show("Character Saved!");
             }
             catch (Exception ex)
             {

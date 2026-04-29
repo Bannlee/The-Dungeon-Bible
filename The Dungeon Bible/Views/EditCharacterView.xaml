@@ -29,8 +29,7 @@
             <Button Margin="0,0,371,180" Background="Bisque" FontFamily="Cambria" Content="Back"
              Command ="{Binding Return}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-            <TextBlock Text="{Binding savemessage}" HorizontalAlignment="Left" Margin="97,57,0,223" FontFamily="Cambria" FontSize="20" Width="128" Grid.Row="1" Foreground="#5198ED"/>
-            <!---BUttons and stuff-->
+          <!---BUttons and stuff-->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="292"/>
@@ -38,27 +37,29 @@
                 </Grid.ColumnDefinitions>
                 <Border Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="1" Background="Black" Margin="0.5"/>
 
-                <TextBlock Text="Edit Character" HorizontalAlignment="Center" Margin="0,10,0,-10" FontFamily="Cambria" FontSize="20" Width="128"/>
-                <TextBlock Text="Stats" HorizontalAlignment="Left" Margin="59,10,0,-10" FontFamily="Cambria" FontSize="20" Width="128" Grid.Column="1"/>
+                <TextBlock Text="Edit Character" HorizontalAlignment="Center" FontFamily="Cambria" FontSize="20" Width="128"/>
+                <TextBlock Text="Stats" HorizontalAlignment="Left" Margin="59,0,0,0" FontFamily="Cambria" FontSize="20" Width="128" Grid.Column="1"/>
 
-                <TextBlock Text="Name" HorizontalAlignment="Left" Margin="15,55,0,-56" FontFamily="Cambria" FontSize="18" Width="110"/>
-                <TextBlock Text="Race" HorizontalAlignment="Left" Margin="15,131,0,-131" FontFamily="Cambria" FontSize="18" Width="110"/>
-                <TextBlock Text="Class" HorizontalAlignment="Left" Margin="15,212,0,-212" FontFamily="Cambria" FontSize="18" Width="110"/>
-                <TextBlock Text="Class" HorizontalAlignment="Left" Margin="15,212,0,-212" FontFamily="Cambria" FontSize="18" Width="110"/>
+                <TextBlock Text="Name" HorizontalAlignment="Left" Margin="15,27,0,-28" FontFamily="Cambria" FontSize="18" Width="110"/>
+                <TextBlock Text="Race" HorizontalAlignment="Left" Margin="15,93,0,-93" FontFamily="Cambria" FontSize="18" Width="110"/>
+                <TextBlock Text="Image" HorizontalAlignment="Left" Margin="15,225,0,-225" FontFamily="Cambria" FontSize="18" Width="110"/>
+                <TextBlock Text="Class" HorizontalAlignment="Left" Margin="15,164,0,-164" FontFamily="Cambria" FontSize="18" Width="110"/>
                 <TextBlock Text="Level" HorizontalAlignment="Left" Margin="15,283,0,-283" FontFamily="Cambria" FontSize="18" Width="110"/>
 
-                <TextBox Margin="15,86,15,366" Text="{Binding SelectedCharacter.Charname}"/>
+                <TextBox Margin="15,50,15,402" Text="{Binding SelectedCharacter.Charname}"/>
 
-                <ComboBox Margin="15,164,15,292" ItemsSource="{Binding Races}"
+                <ComboBox Margin="15,120,15,336" ItemsSource="{Binding Races}"
              SelectedItem="{Binding SelectedCharacter.Charrace}"
              DisplayMemberPath="RaceName"/>
 
-                <ComboBox Margin="15,238,15,218"
+                <ComboBox Margin="15,186,15,270"
                 ItemsSource="{Binding Classes}"
                 SelectedItem="{Binding SelectedCharacter.Charclass}"
                 DisplayMemberPath="ClassName"/>
 
-                <TextBox Margin="15,304,145,153" Text="{Binding SelectedCharacter.Level}"/>
+                <TextBox Margin="14,250,39,207" Text="{Binding SelectedCharacter.Images}"/>
+
+                <TextBox Margin="15,305,145,152" Text="{Binding SelectedCharacter.Level}"/>
 
 
 
